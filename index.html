@@ -3,641 +3,550 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mardan Camera Center — Capture the Extraordinary</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<title>Mardan Camera Center - Best Camera Store in Pakistan</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════
-   RESET & ROOT
-════════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:#fff;color:#111;overflow-x:hidden;}
+
+/* ── VARIABLES ─────────────────────────────── */
 :root{
-  --gold:#c9a84c;
-  --gold2:#e8c56a;
-  --gold-dim:#8a6e2f;
-  --ink:#0d0d0d;
-  --ink2:#1a1a1a;
-  --ink3:#2a2a2a;
-  --cream:#faf8f4;
-  --cream2:#f4f0e8;
-  --bone:#e8e2d6;
-  --muted:#8a8580;
-  --muted2:#b0aa9e;
-  --accent:#c9a84c;
-  --red:#d42b2b;
-  --glow:rgba(201,168,76,0.25);
-  --border:rgba(201,168,76,0.18);
-  --border2:rgba(0,0,0,0.08);
-  --card-bg:rgba(255,255,255,0.98);
-  --shadow:0 4px 32px rgba(0,0,0,0.08);
-  --shadow-xl:0 16px 80px rgba(0,0,0,0.14);
+  --red:#e8282a;
+  --red2:#c41e20;
+  --dark:#0f0f0f;
+  --gray:#f5f5f5;
+  --gray2:#e8e8e8;
+  --gray3:#999;
+  --text:#222;
+  --text2:#555;
+  --border:#e0e0e0;
+  --white:#fff;
+  --shadow:0 2px 20px rgba(0,0,0,.08);
+  --shadow2:0 8px 40px rgba(0,0,0,.12);
 }
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;cursor:none;}
 
-/* ════════════════ CUSTOM CURSOR ════════════════ */
-.cursor{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,background 0.2s;mix-blend-mode:multiply;}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.18s ease,opacity 0.3s;}
-.cursor-ring.expand{width:54px;height:54px;opacity:0.6;}
+/* ── ANNOUNCEMENT BAR ──────────────────────── */
+.ann-bar{background:var(--dark);color:rgba(255,255,255,.85);text-align:center;padding:9px 20px;font-size:12.5px;font-weight:500;letter-spacing:.2px;}
+.ann-bar strong{color:#ffd700;}
 
-/* ════════════════ SCROLLBAR ════════════════ */
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:var(--cream);}
-::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+/* ── TOP HEADER ────────────────────────────── */
+.top-header{background:#fff;border-bottom:1px solid var(--border);padding:14px 0;}
+.top-inner{max-width:1380px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;}
+.logo-wrap{flex-shrink:0;display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-wrap img{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+.logo-text-wrap .l1{font-size:18px;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.1;}
+.logo-text-wrap .l2{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-top:1px;}
 
-/* ════════════════ PAGES ════════════════ */
-.page{display:none;}
-.page.active{display:block;}
+.search-bar{flex:1;max-width:640px;display:flex;border:2px solid var(--dark);border-radius:8px;overflow:hidden;transition:border-color .2s;}
+.search-bar:focus-within{border-color:var(--red);}
+.search-bar input{flex:1;border:none;outline:none;padding:12px 18px;font-size:14px;font-family:'Outfit',sans-serif;color:var(--text);background:#fff;}
+.search-bar input::placeholder{color:#bbb;}
+.search-bar button{background:var(--dark);color:#fff;border:none;padding:0 22px;font-size:18px;cursor:pointer;transition:background .2s;}
+.search-bar button:hover{background:var(--red);}
 
-/* ════════════════ ANNOUNCEMENT BAR ════════════════ */
-.ann{background:var(--ink);color:rgba(255,255,255,0.7);text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.8px;font-weight:500;position:relative;overflow:hidden;}
-.ann::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.08),transparent);animation:annShimmer 3s infinite;}
-@keyframes annShimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
-.ann strong{color:var(--gold);}
+.header-right{display:flex;align-items:center;gap:20px;margin-left:auto;}
+.support-info{text-align:right;}
+.support-info .sup-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray3);}
+.support-info .sup-num{font-size:15px;font-weight:800;color:var(--dark);}
+.header-icons{display:flex;align-items:center;gap:4px;}
+.hicon{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border-radius:8px;cursor:pointer;transition:background .2s;border:none;background:transparent;font-family:'Outfit',sans-serif;}
+.hicon:hover{background:var(--gray);}
+.hicon svg{width:22px;height:22px;stroke:var(--dark);fill:none;stroke-width:1.8;}
+.hicon .icon-label{font-size:10px;font-weight:600;color:var(--text2);}
+.hicon .badge{position:absolute;top:4px;right:8px;width:17px;height:17px;background:var(--red);color:#fff;font-size:9px;font-weight:800;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 
-/* ════════════════ HEADER ════════════════ */
-.header{background:rgba(250,248,244,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--bone);padding:14px 0;position:sticky;top:0;z-index:500;}
-.header-inner{max-width:1440px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:24px;}
-.logo{display:flex;align-items:center;gap:14px;cursor:pointer;flex-shrink:0;}
-.logo-icon{width:48px;height:48px;background:var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform 0.3s;}
-.logo:hover .logo-icon{transform:rotate(-5deg) scale(1.05);}
-.logo-text .lt1{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-0.5px;}
-.logo-text .lt2{font-size:10px;font-weight:500;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-top:1px;}
-
-.search{flex:1;max-width:560px;position:relative;}
-.search input{width:100%;background:var(--cream2);border:1.5px solid var(--bone);border-radius:10px;padding:11px 48px 11px 18px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;transition:all 0.2s;}
-.search input:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px var(--glow);}
-.search input::placeholder{color:var(--muted2);}
-.search-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);transition:color 0.2s;font-size:16px;}
-.search-btn:hover{color:var(--gold);}
-
-.h-right{display:flex;align-items:center;gap:6px;margin-left:auto;}
-.h-phone{margin-right:12px;text-align:right;}
-.h-phone .hp1{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
-.h-phone .hp2{font-size:15px;font-weight:700;color:var(--ink);}
-.hbtn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px;border-radius:8px;cursor:pointer;border:none;background:transparent;transition:background 0.2s;font-family:'DM Sans',sans-serif;}
-.hbtn:hover{background:var(--cream2);}
-.hbtn svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;}
-.hbtn span{font-size:9px;font-weight:600;color:var(--muted);letter-spacing:0.5px;}
-.hbtn.cart-btn{background:var(--ink);border-radius:10px;}
-.hbtn.cart-btn svg{stroke:#fff;}
-.hbtn.cart-btn span{color:rgba(255,255,255,0.6);}
-.hbtn.cart-btn:hover{background:var(--ink3);}
-.cart-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;background:var(--gold);color:var(--ink);font-size:9px;font-weight:800;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.hbtn-wrap{position:relative;}
-
-/* ════════════════ NAVBAR ════════════════ */
-nav{background:var(--ink);position:sticky;top:77px;z-index:400;}
-.nav-inner{max-width:1440px;margin:0 auto;padding:0 32px;display:flex;align-items:stretch;}
+/* ── MEGA NAVBAR ───────────────────────────── */
+nav{background:var(--dark);position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.3);}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 24px;display:flex;align-items:stretch;}
 .nav-item{position:relative;}
-.nav-link{display:flex;align-items:center;gap:5px;padding:13px 16px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.5px;color:rgba(255,255,255,0.65);cursor:pointer;transition:all 0.2s;white-space:nowrap;border:none;background:transparent;text-transform:uppercase;}
-.nav-link:hover,.nav-link.on{color:#fff;}
-.nav-link.on::after,.nav-link:hover::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--gold);border-radius:1px;}
-.nav-link::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:transparent;border-radius:1px;transition:background 0.2s;}
-.nav-arr{font-size:8px;opacity:0.4;transition:transform 0.2s;}
-.nav-item:hover .nav-arr{transform:rotate(180deg);}
-.nav-drop{position:absolute;top:calc(100% + 1px);left:0;background:#fff;border:1px solid var(--bone);border-top:2px solid var(--gold);border-radius:0 0 12px 12px;min-width:220px;padding:8px 0;box-shadow:var(--shadow-xl);opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1);z-index:600;}
-.nav-item:hover .nav-drop{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-drop.mega{min-width:640px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:24px;}
-.mega-col-head{font-family:'Syne',sans-serif;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);padding-bottom:10px;border-bottom:1px solid var(--bone);margin-bottom:10px;}
-.ddl{display:flex;align-items:center;gap:8px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;border-radius:6px;transition:all 0.15s;}
-.ddl:hover{background:var(--cream2);color:var(--gold);padding-left:18px;}
+.nav-link{display:flex;align-items:center;gap:5px;padding:14px 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);cursor:pointer;transition:all .2s;white-space:nowrap;border:none;background:transparent;font-family:'Outfit',sans-serif;letter-spacing:.1px;}
+.nav-link:hover,.nav-link.active-nav{color:#fff;background:var(--red);}
+.nav-link .arr{font-size:9px;opacity:.6;transition:transform .2s;}
+.nav-item:hover .arr{transform:rotate(180deg);}
+
+/* Mega dropdown */
+.mega-drop{position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:0 0 12px 12px;min-width:240px;padding:8px 0;box-shadow:var(--shadow2);opacity:0;pointer-events:none;transition:all .22s cubic-bezier(.34,1.56,.64,1);transform:translateY(-8px) scale(.98);z-index:300;}
+.nav-item:hover .mega-drop{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+.mega-drop.wide{min-width:680px;display:grid;grid-template-columns:repeat(3,1fr);padding:20px;}
+.mega-col-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);padding:0 0 10px;border-bottom:1px solid var(--border);margin-bottom:10px;}
+.dd-link{display:flex;align-items:center;gap:8px;padding:9px 16px;font-size:13px;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;border-radius:6px;}
+.dd-link:hover{background:var(--gray);color:var(--red);padding-left:20px;}
+.dd-link .dd-arrow{margin-left:auto;font-size:10px;color:var(--gray3);}
+.mega-col .dd-link{padding:7px 10px;}
+
+/* Store / Blog links */
 .nav-extra{margin-left:auto;display:flex;align-items:stretch;}
-.nav-extra .nav-link{color:rgba(255,255,255,0.4);}
+.nav-extra .nav-link{color:rgba(255,255,255,.6);}
 
-/* ════════════════ HERO ════════════════ */
-.hero{background:var(--ink);position:relative;overflow:hidden;min-height:600px;display:flex;align-items:center;}
-/* animated noise texture */
-.hero::before{content:'';position:absolute;inset:0;opacity:0.04;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size:200px;}
-.hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-.hero-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.2),transparent);animation:lineSweep 8s infinite;}
-.hero-line:nth-child(1){top:20%;width:100%;animation-delay:0s;}
-.hero-line:nth-child(2){top:50%;width:100%;animation-delay:2.5s;}
-.hero-line:nth-child(3){top:80%;width:100%;animation-delay:5s;}
-@keyframes lineSweep{0%{transform:translateX(-100%);opacity:0;}20%{opacity:1;}80%{opacity:1;}100%{transform:translateX(100%);opacity:0;}}
+/* ── HERO SLIDER ────────────────────────────── */
+.hero{position:relative;overflow:hidden;background:var(--dark);}
+.hero-slide{position:relative;min-height:520px;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 40%,#16213e 70%,#0f3460 100%);}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.5) 60px,rgba(255,255,255,.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.5) 60px,rgba(255,255,255,.5) 61px);}
+.hero-content{position:relative;max-width:1380px;margin:0 auto;padding:60px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-label{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(38px,4.5vw,62px);line-height:1.1;color:#fff;font-weight:800;margin-bottom:16px;}
+.hero-title em{font-style:italic;color:var(--red);}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:32px;max-width:460px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-red{background:var(--red);color:#fff;border:2px solid var(--red);padding:13px 32px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.btn-red:hover{background:var(--red2);border-color:var(--red2);transform:translateY(-1px);}
+.btn-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3);padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.btn-white:hover{border-color:#fff;background:rgba(255,255,255,.08);}
 
-.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
-.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,0.12),transparent 70%);top:-100px;right:-100px;}
-.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,0.07),transparent 70%);bottom:-80px;left:10%;}
-
-.hero-inner{position:relative;max-width:1440px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;z-index:2;}
-
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);border-radius:100px;padding:6px 16px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:24px;}
-.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.8);}}
-
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(44px,5.5vw,76px);line-height:1.05;color:#fff;margin-bottom:20px;}
-.hero-title em{font-style:italic;color:var(--gold);}
-.hero-title .ht-outline{-webkit-text-stroke:1px rgba(255,255,255,0.35);color:transparent;}
-
-.hero-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:36px;max-width:440px;}
-
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
-.btn-gold{background:var(--gold);color:var(--ink);padding:14px 32px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.5px;border:none;cursor:pointer;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,0.35);}
-.btn-ghost{background:transparent;color:rgba(255,255,255,0.7);padding:14px 28px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.5px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;transition:all 0.25s;}
-.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:#fff;background:rgba(255,255,255,0.05);}
-
-.hero-stats{display:flex;gap:28px;}
-.hstat{display:flex;flex-direction:column;gap:2px;}
-.hstat-num{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#fff;}
-.hstat-lbl{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;}
-.hstat-div{width:1px;background:rgba(255,255,255,0.1);margin:0;}
-
-/* Hero Visual — 3D Stack */
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
-.hero-3d-stage{width:480px;height:480px;position:relative;perspective:1200px;}
-.h3d-ring{position:absolute;inset:0;border:1px solid rgba(201,168,76,0.12);border-radius:50%;animation:ringRotate 20s linear infinite;}
-.h3d-ring:nth-child(2){inset:40px;border-color:rgba(201,168,76,0.08);animation-duration:28s;animation-direction:reverse;}
-.h3d-ring:nth-child(3){inset:80px;border-color:rgba(201,168,76,0.05);animation-duration:36s;}
-@keyframes ringRotate{0%{transform:rotateX(70deg) rotate(0deg);}100%{transform:rotateX(70deg) rotate(360deg);}}
-
-.h3d-center{position:absolute;inset:100px;background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:heroFloat 6s ease-in-out infinite;}
+.hero-cam-circle{width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-cam-emoji{font-size:120px;filter:drop-shadow(0 20px 60px rgba(232,40,42,.3));animation:heroFloat 6s ease-in-out infinite;}
 @keyframes heroFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
-.h3d-cam{font-size:96px;filter:drop-shadow(0 24px 60px rgba(201,168,76,0.25));}
+.hero-stat{position:absolute;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 16px;}
+.hs1{top:20px;right:-20px;}
+.hs2{bottom:40px;left:-20px;}
+.hs-val{font-size:20px;font-weight:800;color:#fff;}
+.hs-key{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;}
+.hero-ribbon{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ffd700,#ffb300);color:#000;font-size:10px;font-weight:800;padding:4px 14px;border-radius:100px;white-space:nowrap;}
 
-.h3d-card{position:absolute;background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:14px 18px;}
-.hc1{top:30px;right:-10px;animation:floatCard1 7s ease-in-out infinite;}
-.hc2{bottom:50px;left:-20px;animation:floatCard2 9s ease-in-out infinite;}
-.hc3{bottom:120px;right:-30px;animation:floatCard3 8s ease-in-out infinite;}
-@keyframes floatCard1{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-@keyframes floatCard2{0%,100%{transform:translateY(0);}50%{transform:translateY(12px);}}
-@keyframes floatCard3{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-.hcard-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;}
-.hcard-sub{font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;letter-spacing:0.5px;}
-.hcard-badge{display:inline-block;background:rgba(201,168,76,0.2);color:var(--gold);font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;}
+/* Hero stats strip */
+.hero-strip{background:#fff;border-bottom:2px solid var(--border);}
+.strip-inner{max-width:1380px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);divide-x:1px solid var(--border);}
+.strip-item{display:flex;align-items:center;gap:12px;padding:18px 20px;border-right:1px solid var(--border);}
+.strip-item:last-child{border-right:none;}
+.strip-icon{width:40px;height:40px;background:var(--gray);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.strip-title{font-size:13px;font-weight:700;color:var(--dark);}
+.strip-sub{font-size:11px;color:var(--gray3);margin-top:2px;}
 
-.ribbon{position:absolute;top:60px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-family:'Syne',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap;}
+/* ── CONTAINER ──────────────────────────────── */
+.container{max-width:1380px;margin:0 auto;padding:0 24px;}
 
-/* ════════════════ TRUST STRIP ════════════════ */
-.trust-strip{background:#fff;border-top:1px solid var(--bone);border-bottom:1px solid var(--bone);}
-.trust-inner{max-width:1440px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);}
-.trust-item{display:flex;align-items:center;gap:12px;padding:18px 16px;border-right:1px solid var(--bone);}
-.trust-item:last-child{border-right:none;}
-.trust-ico{width:38px;height:38px;background:var(--cream2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
-.trust-t1{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--ink);}
-.trust-t2{font-size:11px;color:var(--muted);margin-top:2px;}
+/* ── SECTION HEADERS ────────────────────────── */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;}
+.sec-title-wrap{display:flex;align-items:center;gap:14px;}
+.sec-title-bar{width:5px;height:32px;background:var(--red);border-radius:3px;}
+.sec-title{font-size:22px;font-weight:800;color:var(--dark);}
+.sec-sub{font-size:13px;color:var(--gray3);margin-top:3px;}
+.view-all{font-size:13px;font-weight:700;color:var(--red);display:flex;align-items:center;gap:4px;cursor:pointer;border:1.5px solid var(--red);padding:7px 16px;border-radius:6px;transition:all .2s;background:transparent;font-family:'Outfit',sans-serif;}
+.view-all:hover{background:var(--red);color:#fff;}
 
-/* ════════════════ SECTION HEADER ════════════════ */
-.sec-hd{margin-bottom:32px;}
-.sec-hd.center{text-align:center;}
-.sec-tag{display:inline-flex;align-items:center;gap:6px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
-.sec-tag::before{content:'';width:20px;height:1.5px;background:var(--gold);}
-.sec-hd.center .sec-tag::before{display:none;}
-.sec-hd.center .sec-tag::after{content:'';width:20px;height:1.5px;background:var(--gold);}
-.sec-h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3vw,42px);color:var(--ink);line-height:1.15;}
-.sec-h2 em{font-style:italic;color:var(--gold-dim);}
-.sec-p{font-size:15px;color:var(--muted);margin-top:10px;line-height:1.7;}
-.sec-link{display:inline-flex;align-items:center;gap:6px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:0.5px;border-bottom:1.5px solid var(--gold);padding-bottom:2px;cursor:pointer;transition:color 0.2s;}
-.sec-link:hover{color:var(--gold);}
-.sec-hd-row{display:flex;align-items:flex-end;justify-content:space-between;}
+/* ── CATEGORY TABS ──────────────────────────── */
+.cat-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:24px;}
+.cat-tab{padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--text2);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.cat-tab:hover{border-color:var(--red);color:var(--red);}
+.cat-tab.active{background:var(--red);color:#fff;border-color:var(--red);}
 
-/* ════════════════ SECTION WRAPPER ════════════════ */
-.sec{padding:64px 0;}
-.sec-cream{background:var(--cream);}
-.sec-white{background:#fff;}
-.sec-ink{background:var(--ink);}
-.wrap{max-width:1440px;margin:0 auto;padding:0 32px;}
-
-/* ════════════════ CATEGORY GRID ════════════════ */
-.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
-.cat-card{background:#fff;border:1.5px solid var(--bone);border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;}
-.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold),transparent);opacity:0;transition:opacity 0.3s;border-radius:12px;}
-.cat-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 12px 40px rgba(201,168,76,0.15);}
-.cat-card:hover::before{opacity:0.04;}
-.cat-ico{font-size:34px;margin-bottom:12px;display:block;transition:transform 0.3s;}
-.cat-card:hover .cat-ico{transform:scale(1.12) rotate(-5deg);}
-.cat-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.cat-cnt{font-size:11px;color:var(--muted);}
-.cat-card:hover .cat-name{color:var(--gold-dim);}
-
-/* ════════════════ PRODUCTS GRID ════════════════ */
-.pgrid{display:grid;gap:16px;}
+/* ── PRODUCT CARD ───────────────────────────── */
+.prod-grid{display:grid;gap:16px;}
 .g5{grid-template-columns:repeat(5,1fr);}
 .g4{grid-template-columns:repeat(4,1fr);}
 .g3{grid-template-columns:repeat(3,1fr);}
 
-.pcard{background:#fff;border:1.5px solid var(--bone);border-radius:14px;overflow:hidden;cursor:pointer;transition:all 0.3s;position:relative;}
-.pcard:hover{border-color:var(--gold);box-shadow:0 12px 48px rgba(0,0,0,0.1);transform:translateY(-5px);}
-.pcard-img{position:relative;aspect-ratio:1;background:var(--cream2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.pcard-emoji{font-size:68px;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);}
-.pcard:hover .pcard-emoji{transform:scale(1.1);}
-.pcard-badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:4px;}
-.badge{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 9px;border-radius:4px;text-transform:uppercase;}
-.badge-sale{background:var(--red);color:#fff;}
-.badge-new{background:#1a7a4a;color:#fff;}
-.badge-hot{background:#c96a00;color:#fff;}
-.pcard-acts{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateX(8px);transition:all 0.25s;}
-.pcard:hover .pcard-acts{opacity:1;transform:translateX(0);}
-.pact{width:32px;height:32px;background:#fff;border:1px solid var(--bone);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.pact:hover{background:var(--gold);border-color:var(--gold);}
-.pcard-qv{position:absolute;bottom:0;left:0;right:0;background:rgba(13,13,13,0.9);color:#fff;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-align:center;padding:11px;border:none;cursor:pointer;opacity:0;transform:translateY(4px);transition:all 0.25s;text-transform:uppercase;}
-.pcard:hover .pcard-qv{opacity:1;transform:translateY(0);}
-.pcard-info{padding:14px;}
-.pcard-brand{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:4px;}
-.pcard-name{font-size:13px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.pcard-stars{color:#c9a84c;font-size:11px;margin-bottom:8px;}
-.pcard-price-row{display:flex;align-items:center;justify-content:space-between;}
-.pcard-price{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--ink);}
-.pcard-old{font-size:11px;color:var(--muted2);text-decoration:line-through;display:block;margin-top:1px;}
-.pcard-add{background:var(--ink);color:#fff;border:none;padding:8px 14px;border-radius:7px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
-.pcard-add:hover{background:var(--gold);color:var(--ink);}
+.prod-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .3s;position:relative;}
+.prod-card:hover{border-color:var(--red);box-shadow:0 8px 32px rgba(232,40,42,.1);transform:translateY(-4px);}
 
-/* ════════════════ TABS ════════════════ */
-.tabs{display:flex;gap:4px;margin-bottom:28px;flex-wrap:wrap;}
-.tab{padding:8px 20px;border-radius:7px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.5px;border:1.5px solid var(--bone);background:#fff;color:var(--muted);cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
-.tab:hover{border-color:var(--gold);color:var(--gold-dim);}
-.tab.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+.prod-img-wrap{position:relative;aspect-ratio:1;background:var(--gray);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.prod-emoji{font-size:64px;transition:transform .3s;}
+.prod-card:hover .prod-emoji{transform:scale(1.08);}
 
-/* ════════════════ FEATURED BANNERS ════════════════ */
-.banner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:48px 0;}
-.banner{border-radius:20px;padding:40px 44px;position:relative;overflow:hidden;cursor:pointer;min-height:200px;display:flex;align-items:center;}
-.banner-dark{background:linear-gradient(135deg,var(--ink),#1c1c2e);}
-.banner-gold{background:linear-gradient(135deg,#2a2010,#1a1508);}
-.banner::after{position:absolute;right:36px;top:50%;transform:translateY(-50%);font-size:110px;opacity:0.1;transition:transform 0.4s,opacity 0.4s;}
-.banner:hover::after{opacity:0.18;transform:translateY(-50%) scale(1.1);}
-.banner-dark::after{content:'📷';}
-.banner-gold::after{content:'🎬';}
-.banner-tag{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;}
-.banner-title{font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:8px;line-height:1.2;}
-.banner-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:22px;}
-.banner-btn{background:var(--gold);color:var(--ink);border:none;padding:10px 22px;border-radius:7px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
-.banner-btn:hover{background:var(--gold2);}
+.prod-badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:4px;}
+.badge-sale{background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;}
+.badge-new{background:#00a651;color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;}
+.badge-hot{background:#ff6b00;color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;}
 
-/* ════════════════ BRANDS ════════════════ */
-.brands-sec{background:var(--ink);padding:40px 0;}
-.brands-row{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;}
-.brand-lbl{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:rgba(255,255,255,0.15);cursor:pointer;letter-spacing:-0.5px;transition:all 0.3s;}
-.brand-lbl:hover{color:var(--gold);}
+.prod-actions{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateX(10px);transition:all .3s;}
+.prod-card:hover .prod-actions{opacity:1;transform:translateX(0);}
+.prod-action-btn{width:34px;height:34px;background:#fff;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.prod-action-btn:hover{background:var(--red);border-color:var(--red);transform:scale(1.1);}
 
-/* ════════════════ TESTIMONIALS ════════════════ */
+.prod-info{padding:14px;}
+.prod-cat{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray3);margin-bottom:5px;}
+.prod-name{font-size:13.5px;font-weight:600;color:var(--dark);line-height:1.4;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prod-rating{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
+.stars{color:#ffc107;font-size:11px;}
+.rating-num{font-size:11px;color:var(--gray3);}
+.prod-price-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.price-wrap{display:flex;flex-direction:column;}
+.price-current{font-size:17px;font-weight:800;color:var(--dark);}
+.price-old{font-size:11px;color:var(--gray3);text-decoration:line-through;}
+.cart-add-btn{background:var(--dark);color:#fff;border:none;padding:8px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;white-space:nowrap;}
+.cart-add-btn:hover{background:var(--red);}
+
+/* Quick view overlay */
+.quick-view-btn{position:absolute;bottom:0;left:0;right:0;background:rgba(232,40,42,.92);color:#fff;border:none;padding:11px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;opacity:0;transform:translateY(4px);transition:all .25s;}
+.prod-card:hover .quick-view-btn{opacity:1;transform:translateY(0);}
+
+/* ── CATEGORY BOXES ─────────────────────────── */
+.cat-boxes{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:48px;}
+.cat-box{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;cursor:pointer;transition:all .3s;}
+.cat-box:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(232,40,42,.1);transform:translateY(-4px);}
+.cat-box-icon{font-size:32px;margin-bottom:10px;display:block;}
+.cat-box-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:3px;}
+.cat-box-count{font-size:11px;color:var(--gray3);}
+.cat-box:hover .cat-box-name{color:var(--red);}
+
+/* ── BANNER STRIPS ──────────────────────────── */
+.banner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0;}
+.banner-card{border-radius:12px;padding:32px 36px;position:relative;overflow:hidden;cursor:pointer;min-height:180px;display:flex;align-items:center;}
+.banner-card-1{background:linear-gradient(135deg,#0f0f0f,#1a1a1a);}
+.banner-card-2{background:linear-gradient(135deg,#1a1a2e,#16213e);}
+.banner-card::before{content:'';position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:100px;opacity:.12;}
+.bc1::before{content:'📷';}
+.bc2::before{content:'🎬';}
+.banner-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px;}
+.banner-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.2;}
+.banner-desc{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.banner-btn{background:var(--red);color:#fff;border:none;padding:10px 22px;border-radius:6px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
+.banner-btn:hover{background:var(--red2);}
+
+/* ── BRANDS ROW ─────────────────────────────── */
+.brands-section{background:var(--gray);padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.brands-row{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;}
+.brand-pill{font-size:18px;font-weight:800;color:#ccc;letter-spacing:-.5px;cursor:pointer;transition:all .25s;}
+.brand-pill:hover{color:var(--red);transform:scale(1.06);}
+
+/* ── SECTION ────────────────────────────────── */
+.section{padding:48px 0;}
+.section-white{background:#fff;}
+.section-gray{background:var(--gray);}
+
+/* ── TESTIMONIALS ───────────────────────────── */
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.test-card{background:#fff;border:1.5px solid var(--bone);border-radius:16px;padding:28px;transition:all 0.3s;position:relative;}
-.test-card::before{content:'❝';position:absolute;top:20px;right:24px;font-size:40px;color:var(--bone);font-family:serif;line-height:1;}
-.test-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.07);}
-.test-stars{color:var(--gold);font-size:13px;margin-bottom:14px;}
-.test-text{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:18px;font-style:italic;}
-.test-author{display:flex;align-items:center;gap:12px;}
-.test-av{width:40px;height:40px;background:var(--ink);color:var(--gold);font-family:'Syne',sans-serif;font-size:15px;font-weight:800;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.test-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ink);}
-.test-loc{font-size:11px;color:var(--muted);}
+.test-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px;}
+.test-card:hover{border-color:var(--red);box-shadow:var(--shadow);}
+.test-stars{color:#ffc107;font-size:13px;margin-bottom:12px;}
+.test-text{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:16px;font-style:italic;}
+.test-author{display:flex;align-items:center;gap:10px;}
+.test-av{width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.test-name{font-size:13px;font-weight:700;color:var(--dark);}
+.test-loc{font-size:11px;color:var(--gray3);}
 
-/* ════════════════ MARQUEE ════════════════ */
-.marquee-wrap{overflow:hidden;background:var(--gold);padding:14px 0;}
-.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marqueeScroll 22s linear infinite;}
-.marquee-item{display:inline-flex;align-items:center;gap:12px;padding:0 32px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--ink);text-transform:uppercase;flex-shrink:0;}
-.marquee-dot{width:4px;height:4px;background:var(--ink);border-radius:50%;opacity:0.4;}
-@keyframes marqueeScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-/* ════════════════ STATS SECTION ════════════════ */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);}
-.stat-box{padding:48px 32px;text-align:center;background:var(--ink);position:relative;overflow:hidden;}
-.stat-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0,rgba(201,168,76,0.08),transparent 70%);}
-.stat-val{font-family:'Syne',sans-serif;font-size:clamp(36px,4vw,56px);font-weight:800;color:#fff;line-height:1;margin-bottom:8px;}
-.stat-val span{color:var(--gold);}
-.stat-lbl{font-size:13px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;}
-
-/* ════════════════ PRODUCTION ════════════════ */
-.prod-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.plan{background:#fff;border:1.5px solid var(--bone);border-radius:18px;padding:36px;transition:all 0.3s;position:relative;overflow:hidden;}
-.plan.featured{background:var(--ink);border-color:var(--gold);}
-.plan-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-family:'Syne',sans-serif;font-size:9px;font-weight:800;letter-spacing:2px;padding:5px 18px;border-radius:0 0 10px 10px;text-transform:uppercase;}
-.plan-tier{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-.plan.featured .plan-tier{color:rgba(255,255,255,0.3);}
-.plan-name{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);margin-bottom:6px;}
-.plan.featured .plan-name{color:#fff;}
-.plan-price{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--ink);margin-bottom:24px;}
-.plan.featured .plan-price{color:#fff;}
-.plan-items{list-style:none;margin-bottom:28px;}
-.plan-items li{padding:9px 0;border-bottom:1px solid var(--bone);font-size:13px;color:var(--muted);display:flex;gap:10px;}
-.plan.featured .plan-items li{border-color:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);}
-.plan-items li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
-.plan-btn{width:100%;background:var(--ink);color:#fff;border:none;padding:13px;border-radius:9px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;transition:all 0.2s;}
-.plan-btn:hover{background:var(--gold);color:var(--ink);}
-.plan.featured .plan-btn{background:var(--gold);color:var(--ink);}
-.plan.featured .plan-btn:hover{background:var(--gold2);}
-
-/* ════════════════ TEAM ════════════════ */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.team-card{background:#fff;border:1.5px solid var(--bone);border-radius:16px;padding:32px 24px;text-align:center;transition:all 0.3s;}
-.team-card:hover{border-color:var(--gold);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.07);}
-.team-av{width:64px;height:64px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 14px;transition:transform 0.3s;}
-.team-card:hover .team-av{transform:scale(1.08);}
-.team-role{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
-.team-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;}
-.team-desc{font-size:12px;color:var(--muted);line-height:1.6;}
-
-/* ════════════════ CONTACT ════════════════ */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-.cinfo-item{display:flex;gap:16px;margin-bottom:24px;}
-.cinfo-ico{width:44px;height:44px;background:var(--cream2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.cinfo-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-.cinfo-val{font-size:15px;font-weight:500;color:var(--ink);}
-.cform{background:#fff;border:1.5px solid var(--bone);border-radius:18px;padding:36px;}
-.cform-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);margin-bottom:24px;}
-.cfield{width:100%;background:var(--cream2);border:1.5px solid var(--bone);border-radius:9px;padding:12px 16px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;margin-bottom:14px;transition:all 0.2s;}
-.cfield:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px var(--glow);}
-textarea.cfield{resize:vertical;min-height:100px;}
-.wa-btn{width:100%;background:#25d366;color:#fff;border:none;padding:14px;border-radius:9px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
-.wa-btn:hover{background:#20b957;transform:translateY(-1px);}
-
-/* ════════════════ FOOTER ════════════════ */
-footer{background:var(--ink2);}
-.foot-top{padding:64px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
-.foot-grid{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;}
-.foot-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;cursor:pointer;}
-.foot-logo-ico{width:44px;height:44px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;}
-.foot-brand{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#fff;}
-.foot-sub{font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:2.5px;text-transform:uppercase;margin-top:1px;}
-.foot-desc{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.8;max-width:260px;margin-bottom:22px;}
-.foot-social{display:flex;gap:8px;}
-.fsoc{width:34px;height:34px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;transition:all 0.2s;}
-.fsoc:hover{background:var(--gold);border-color:var(--gold);}
-.foot-col-h{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:16px;}
+/* ── FOOTER ─────────────────────────────────── */
+footer{background:var(--dark);color:rgba(255,255,255,.6);}
+.foot-top{border-bottom:1px solid rgba(255,255,255,.07);padding:48px 0;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.foot-logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;}
+.foot-logo-text .fl1{font-size:15px;font-weight:800;color:#fff;}
+.foot-logo-text .fl2{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.foot-desc{font-size:13px;line-height:1.8;color:rgba(255,255,255,.35);max-width:260px;margin-bottom:20px;}
+.foot-col-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:16px;}
 .foot-links{list-style:none;}
 .foot-links li{margin-bottom:9px;}
-.foot-links a{font-size:13px;color:rgba(255,255,255,0.38);cursor:pointer;transition:color 0.2s;}
-.foot-links a:hover{color:var(--gold);}
-.foot-ci{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13px;color:rgba(255,255,255,0.38);}
-.foot-ci-ico{font-size:15px;flex-shrink:0;margin-top:1px;}
-.foot-bottom{padding:20px 0;display:flex;justify-content:space-between;align-items:center;}
-.foot-copy{font-size:12px;color:rgba(255,255,255,0.18);}
+.foot-links a{font-size:13px;color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s;}
+.foot-links a:hover{color:#fff;}
+.foot-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13px;color:rgba(255,255,255,.45);}
+.foot-contact-item .fci{font-size:16px;flex-shrink:0;}
+.foot-bottom{padding:20px 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.25);}
+.foot-social{display:flex;gap:8px;}
+.soc{width:32px;height:32px;background:rgba(255,255,255,.05);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;transition:background .2s;}
+.soc:hover{background:var(--red);}
 
-/* ════════════════ CART SIDEBAR ════════════════ */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:800;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px);}
+/* ── CART SIDEBAR ───────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:600;opacity:0;pointer-events:none;transition:opacity .3s;}
 .overlay.open{opacity:1;pointer-events:all;}
-.cart-side{position:fixed;top:0;right:-500px;width:480px;height:100vh;background:#fff;z-index:801;transition:right 0.38s cubic-bezier(0.34,1.56,0.64,1);display:flex;flex-direction:column;box-shadow:-20px 0 80px rgba(0,0,0,0.15);}
+.cart-side{position:fixed;top:0;right:-460px;width:460px;height:100vh;background:#fff;z-index:601;transition:right .35s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;box-shadow:-10px 0 60px rgba(0,0,0,.15);}
 .cart-side.open{right:0;}
-.cart-head{padding:22px 26px;border-bottom:1px solid var(--bone);display:flex;justify-content:space-between;align-items:center;}
-.cart-head-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--ink);}
-.cart-close{width:32px;height:32px;border:1.5px solid var(--bone);border-radius:8px;background:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
-.cart-close:hover{background:var(--red);border-color:var(--red);color:#fff;}
-.cart-body{flex:1;overflow-y:auto;padding:20px 26px;}
-.cart-item-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--bone);}
-.ci-img{width:56px;height:56px;background:var(--cream2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;}
-.ci-name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:4px;}
-.ci-price{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:8px;}
-.ci-qty{display:flex;align-items:center;gap:8px;}
-.ci-qbtn{width:26px;height:26px;border:1.5px solid var(--bone);border-radius:6px;background:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
-.ci-qbtn:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
-.ci-qnum{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;min-width:20px;text-align:center;}
-.ci-remove{font-size:11px;color:var(--red);cursor:pointer;margin-left:8px;}
-.cart-empty{text-align:center;padding:60px 20px;}
-.cart-empty-ico{font-size:56px;display:block;margin-bottom:14px;}
-.cart-footer{padding:20px 26px;border-top:1px solid var(--bone);}
-.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.cart-total-lbl{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--muted);}
-.cart-total-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--ink);}
-.cart-checkout{width:100%;background:var(--ink);color:#fff;border:none;padding:15px;border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
-.cart-checkout:hover{background:var(--gold);color:var(--ink);}
+.cart-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.cart-head-title{font-size:18px;font-weight:800;color:var(--dark);}
+.cart-close-btn{width:32px;height:32px;border:1px solid var(--border);border-radius:6px;background:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.cart-close-btn:hover{background:var(--red);color:#fff;border-color:var(--red);}
+.cart-body{flex:1;overflow-y:auto;padding:20px 24px;}
+.cart-item-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
+.ci-img{width:72px;height:72px;background:var(--gray);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;border:1px solid var(--border);}
+.ci-name{font-size:13.5px;font-weight:600;color:var(--dark);margin-bottom:4px;line-height:1.35;}
+.ci-price{font-size:15px;font-weight:800;color:var(--red);}
+.ci-qty{display:flex;align-items:center;border:1px solid var(--border);border-radius:6px;overflow:hidden;width:fit-content;margin-top:8px;}
+.ci-qty-btn{width:28px;height:28px;background:var(--gray);border:none;font-size:14px;cursor:pointer;transition:background .2s;}
+.ci-qty-btn:hover{background:var(--red);color:#fff;}
+.ci-qty-num{padding:0 12px;font-size:13px;font-weight:700;color:var(--dark);}
+.ci-remove{font-size:11px;color:var(--gray3);cursor:pointer;margin-top:5px;display:inline-block;}
+.ci-remove:hover{color:var(--red);}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--gray3);}
+.cart-empty-icon{font-size:52px;display:block;margin-bottom:14px;}
+.cart-foot{padding:20px 24px;border-top:1px solid var(--border);background:var(--gray);}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.ct-label{font-size:14px;font-weight:600;color:var(--text2);}
+.ct-val{font-size:22px;font-weight:800;color:var(--dark);}
+.checkout-btn{width:100%;background:var(--red);color:#fff;border:none;padding:15px;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;transition:background .2s;}
+.checkout-btn:hover{background:var(--red2);}
 
-/* ════════════════ CAT PAGE ════════════════ */
-.cat-hero-page{background:var(--ink);padding:52px 0;position:relative;overflow:hidden;}
-.cat-hero-page::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.08),transparent 60%);}
-.breadcrumb{font-size:12px;color:rgba(255,255,255,0.3);margin-bottom:12px;}
-.breadcrumb a{color:var(--gold);cursor:pointer;}
-.cat-page-title{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;}
-.cat-page-sub{font-size:15px;color:rgba(255,255,255,0.4);margin-top:6px;}
+/* ── TOAST ──────────────────────────────────── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--dark);color:#fff;padding:13px 24px;border-radius:8px;font-size:13px;font-weight:700;z-index:800;transition:transform .4s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;gap:8px;}
+.toast.show{transform:translateX(-50%) translateY(0);}
 
-.filter-bar{background:#fff;border:1.5px solid var(--bone);border-radius:12px;padding:16px 20px;margin:24px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.filter-lbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);white-space:nowrap;}
-.filter-sep{width:1px;height:20px;background:var(--bone);}
-.filter-btn{padding:6px 16px;border-radius:6px;border:1.5px solid var(--bone);background:#fff;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.5px;color:var(--muted);cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
-.filter-btn:hover{border-color:var(--gold);color:var(--gold-dim);}
-.filter-btn.on{background:var(--ink);color:#fff;border-color:var(--ink);}
-.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-.results-lbl{font-size:13px;color:var(--muted);}
-.sort-sel{padding:8px 14px;border:1.5px solid var(--bone);border-radius:8px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--ink);background:#fff;cursor:pointer;outline:none;}
-.grid-btns{display:flex;gap:4px;margin-left:12px;}
-.gbtn{padding:7px 10px;border:1.5px solid var(--bone);border-radius:7px;background:#fff;font-size:11px;cursor:pointer;transition:all 0.2s;}
-.gbtn.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+/* ── WHATSAPP FLOAT ─────────────────────────── */
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:500;width:58px;height:58px;background:#25d366;border-radius:50%;border:none;cursor:pointer;box-shadow:0 6px 28px rgba(37,211,102,.45);display:flex;align-items:center;justify-content:center;font-size:26px;animation:waBounce 3s ease-in-out infinite;transition:transform .2s;}
+.wa-fab:hover{transform:scale(1.12);}
+@keyframes waBounce{0%,100%{box-shadow:0 6px 28px rgba(37,211,102,.45);}50%{box-shadow:0 6px 48px rgba(37,211,102,.7);}}
 
-/* ════════════════ PRODUCT DETAIL ════════════════ */
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:48px 0;}
-.detail-gallery{position:sticky;top:140px;}
-.gallery-main{background:var(--cream2);border-radius:18px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:120px;margin-bottom:12px;border:1.5px solid var(--bone);}
-.thumbs{display:flex;gap:8px;}
-.thumb{width:68px;height:68px;background:var(--cream2);border:1.5px solid var(--bone);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;transition:all 0.2s;}
-.thumb.on{border-color:var(--gold);background:#fff;}
-.d-brand{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.d-title{font-family:'DM Serif Display',serif;font-size:32px;color:var(--ink);line-height:1.2;margin-bottom:10px;}
-.d-rating{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
-.d-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:12px;}
-.d-price{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--ink);}
-.d-old{font-size:16px;color:var(--muted2);text-decoration:line-through;}
-.d-save{background:rgba(201,168,76,0.15);color:var(--gold-dim);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;padding:4px 10px;border-radius:5px;}
-.d-stock{display:flex;align-items:center;gap:8px;font-size:13px;color:#1a7a4a;font-weight:600;margin-bottom:16px;}
-.d-stock-dot{width:8px;height:8px;background:#1a7a4a;border-radius:50%;animation:blinkGreen 2s infinite;}
-@keyframes blinkGreen{0%,100%{opacity:1;}50%{opacity:0.4;}}
-.d-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--bone);}
-.d-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px;}
-.spec-box{background:var(--cream2);border-radius:9px;padding:10px 14px;}
-.spec-k{font-size:10px;font-weight:600;color:var(--muted2);margin-bottom:3px;letter-spacing:0.5px;}
-.spec-v{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ink);}
-.d-qty-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
-.d-qty{display:flex;align-items:center;gap:10px;background:var(--cream2);border:1.5px solid var(--bone);border-radius:9px;padding:6px 12px;}
-.d-qbtn{width:28px;height:28px;border:none;background:none;font-size:18px;cursor:pointer;color:var(--ink);transition:color 0.2s;}
-.d-qbtn:hover{color:var(--gold-dim);}
-.d-qnum{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;min-width:24px;text-align:center;}
-.d-actions{display:flex;gap:12px;margin-bottom:20px;}
-.d-add{flex:1;background:var(--ink);color:#fff;border:none;padding:14px;border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
-.d-add:hover{background:var(--gold);color:var(--ink);}
-.d-wa{background:#25d366;color:#fff;border:none;padding:14px 22px;border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;}
-.d-wa:hover{background:#20b957;}
-.trust-badges{display:flex;gap:10px;}
-.tbadge{flex:1;background:var(--cream2);border-radius:10px;padding:12px;text-align:center;}
-.tbadge-ico{font-size:20px;margin-bottom:5px;}
-.tbadge-lbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--ink);letter-spacing:0.5px;}
+/* ── PAGES ──────────────────────────────────── */
+.page{display:none;}
+.page.active{display:block;}
 
-/* ════════════════ TOAST ════════════════ */
-.toast{position:fixed;bottom:28px;right:28px;background:var(--ink);color:#fff;padding:14px 22px;border-radius:12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;z-index:9000;opacity:0;transform:translateY(12px);transition:all 0.3s;pointer-events:none;border:1px solid rgba(255,255,255,0.08);max-width:320px;}
-.toast.show{opacity:1;transform:translateY(0);}
-.toast::before{content:'';position:absolute;bottom:0;left:0;height:2px;background:var(--gold);animation:toastBar 3s linear forwards;border-radius:0 0 12px 12px;}
-@keyframes toastBar{from{width:100%;}to{width:0%;}}
+/* ── CAT PAGE ───────────────────────────────── */
+.cat-hero{background:linear-gradient(135deg,var(--dark),#1a1a2e);padding:36px 0;margin-bottom:32px;}
+.cat-hero-inner{max-width:1380px;margin:0 auto;padding:0 24px;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px;}
+.breadcrumb a{color:rgba(255,255,255,.6);cursor:pointer;}
+.breadcrumb a:hover{color:#fff;}
+.cat-hero-title{font-family:'Playfair Display',serif;font-size:36px;color:#fff;font-weight:700;}
+.cat-hero-sub{font-size:14px;color:rgba(255,255,255,.5);margin-top:6px;}
 
-/* ════════════════ ENTRANCE ANIMATIONS ════════════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.fade-up{animation:fadeUp 0.6s ease forwards;}
-.fade-up-d1{animation-delay:0.1s;opacity:0;}
-.fade-up-d2{animation-delay:0.2s;opacity:0;}
-.fade-up-d3{animation-delay:0.3s;opacity:0;}
+.filter-bar{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;}
+.filter-label{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gray3);}
+.filter-sep{width:1px;height:24px;background:var(--border);}
+.brand-btn{padding:6px 14px;border-radius:6px;font-size:12.5px;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--text2);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.brand-btn:hover,.brand-btn.on{background:var(--red);color:#fff;border-color:var(--red);}
+.sub-btn{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--text2);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.sub-btn:hover,.sub-btn.on{background:var(--dark);color:#fff;border-color:var(--dark);}
 
-/* WhatsApp floating button */
-.wa-float{position:fixed;bottom:28px;left:28px;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;z-index:700;box-shadow:0 8px 32px rgba(37,211,102,0.4);transition:all 0.3s;animation:waBounce 3s ease-in-out infinite;}
-@keyframes waBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-.wa-float:hover{transform:scale(1.1)!important;box-shadow:0 12px 40px rgba(37,211,102,0.5);}
+.products-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
+.results-label{font-size:13px;color:var(--gray3);font-weight:500;}
+.toolbar-right{display:flex;align-items:center;gap:10px;}
+.sort-sel{border:1.5px solid var(--border);border-radius:6px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--dark);outline:none;background:#fff;cursor:pointer;font-family:'Outfit',sans-serif;}
+.sort-sel:focus{border-color:var(--red);}
+.size-btns{display:flex;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;}
+.size-btn{padding:7px 11px;border:none;background:#fff;font-size:11px;font-weight:700;color:var(--gray3);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.size-btn.on{background:var(--dark);color:#fff;}
+.size-btn:hover:not(.on){background:var(--gray);}
+
+/* ── PRODUCT DETAIL ─────────────────────────── */
+.detail-breadcrumb{padding:16px 0;margin-bottom:0;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:32px 0 48px;}
+.gallery-main-box{background:var(--gray);border:1px solid var(--border);border-radius:10px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:110px;margin-bottom:12px;transition:background .3s;}
+.gallery-main-box:hover{background:#e8f0fe;}
+.thumbs-row{display:flex;gap:8px;}
+.thumb{width:64px;height:64px;background:var(--gray);border:2px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;transition:all .2s;}
+.thumb:hover,.thumb.on{border-color:var(--red);}
+.d-brand{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.d-title{font-size:28px;font-weight:800;color:var(--dark);line-height:1.25;margin-bottom:14px;}
+.d-rating{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.d-price-row{margin-bottom:6px;}
+.d-price{font-size:30px;font-weight:800;color:var(--dark);}
+.d-old{font-size:16px;color:var(--gray3);text-decoration:line-through;margin-left:10px;}
+.d-save{display:inline-block;background:#fff3cd;color:#856404;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;margin-left:8px;}
+.d-stock{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:#00a651;margin:16px 0;}
+.d-stock-dot{width:8px;height:8px;background:#00a651;border-radius:50%;}
+.d-desc{font-size:14.5px;color:var(--text2);line-height:1.8;margin:16px 0;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.d-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;}
+.spec-box{background:var(--gray);border-radius:6px;padding:10px 12px;}
+.spec-k{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--gray3);margin-bottom:3px;}
+.spec-v{font-size:13px;font-weight:700;color:var(--dark);}
+.d-qty-row{display:flex;align-items:center;gap:14px;margin:20px 0;}
+.d-qty{display:flex;align-items:center;border:2px solid var(--border);border-radius:6px;overflow:hidden;}
+.d-qty-btn{width:40px;height:40px;background:var(--gray);border:none;font-size:18px;cursor:pointer;transition:background .2s;}
+.d-qty-btn:hover{background:var(--red);color:#fff;}
+.d-qty-num{padding:0 18px;font-size:15px;font-weight:800;color:var(--dark);}
+.d-actions{display:flex;gap:10px;margin-top:8px;}
+.d-add-btn{flex:1;background:var(--dark);color:#fff;border:none;padding:15px;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;transition:background .2s;}
+.d-add-btn:hover{background:var(--red);}
+.d-wa-btn{background:#25d366;color:#fff;border:none;padding:15px 20px;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;transition:opacity .2s;}
+.d-wa-btn:hover{opacity:.88;}
+.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;}
+.trust-box{background:var(--gray);border-radius:8px;padding:12px;text-align:center;}
+.trust-box-icon{font-size:20px;margin-bottom:5px;}
+.trust-box-label{font-size:11px;font-weight:700;color:var(--dark);}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media(max-width:1100px){
+  .g5{grid-template-columns:repeat(4,1fr);}
+  .cat-boxes{grid-template-columns:repeat(4,1fr);}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .strip-inner{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:900px){
+  .top-inner{flex-wrap:wrap;}
+  .nav-inner{overflow-x:auto;}
+  .hero-content{grid-template-columns:1fr;}
+  .hero-visual{display:none;}
+  .g5,.g4{grid-template-columns:repeat(3,1fr);}
+  .banner-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr 1fr;}
+  .detail-grid{grid-template-columns:1fr;}
+  .cat-boxes{grid-template-columns:repeat(3,1fr);}
+  .strip-inner{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .g5,.g4,.g3{grid-template-columns:repeat(2,1fr);}
+  .cat-boxes{grid-template-columns:repeat(2,1fr);}
+  .test-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:32px;}
+  .support-info{display:none;}
+  .cart-side{width:100%;right:-100%;}
+}
 </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="curRing"></div>
+<!-- Toast -->
+<div class="toast" id="toast">✓ Added to cart</div>
 
-<!-- WhatsApp Float -->
-<div class="wa-float" onclick="openWA()" title="Chat on WhatsApp">💬</div>
-
-<!-- Overlay + Cart -->
+<!-- Cart Overlay -->
 <div class="overlay" id="overlay" onclick="closeCart()"></div>
 <div class="cart-side" id="cartSide">
   <div class="cart-head">
-    <span class="cart-head-title">Your Cart</span>
-    <button class="cart-close" onclick="closeCart()">✕</button>
+    <span class="cart-head-title">🛒 Shopping Cart</span>
+    <button class="cart-close-btn" onclick="closeCart()">✕</button>
   </div>
   <div class="cart-body" id="cartBody">
-    <div class="cart-empty"><span class="cart-empty-ico">🛍️</span><p style="font-size:15px;font-weight:700;color:#555;margin-bottom:6px;">Your cart is empty</p><p style="font-size:13px;color:#999;">Browse products to get started!</p></div>
+    <div class="cart-empty"><span class="cart-empty-icon">🛍️</span><p style="font-size:15px;font-weight:700;color:#555;margin-bottom:6px;">Your cart is empty</p><p style="font-size:13px;color:#999;">Add products to get started!</p></div>
   </div>
-  <div class="cart-footer">
-    <div class="cart-total-row">
-      <span class="cart-total-lbl">Total</span>
-      <span class="cart-total-val" id="cartTotalEl">PKR 0</span>
-    </div>
-    <button class="cart-checkout" onclick="doCheckout()">Proceed to Checkout →</button>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span class="ct-label">Total Amount:</span><span class="ct-val" id="cartTotalEl">PKR 0</span></div>
+    <button class="checkout-btn" onclick="doCheckout()">Proceed to Checkout →</button>
   </div>
 </div>
 
-<!-- Toast -->
-<div class="toast" id="toast"></div>
+<!-- WhatsApp FAB -->
+<button class="wa-fab" onclick="openWA()" title="Chat on WhatsApp">💬</button>
 
-<!-- ════════════ ANNOUNCEMENT ════════════ -->
-<div class="ann">🇵🇰 Free Delivery on orders over PKR 50,000 &nbsp;·&nbsp; <strong>Cash on Delivery Available</strong> &nbsp;·&nbsp; 100% Authentic Products &nbsp;·&nbsp; <strong>Call: +92 937 123 4567</strong></div>
+<!-- ── ANNOUNCEMENT BAR ──────────────────────── -->
+<div class="ann-bar">⚠️ Due to market fluctuations, please <strong>confirm price & availability</strong> before ordering. Call: <strong>+92 937 123 4567</strong></div>
 
-<!-- ════════════ HEADER ════════════ -->
-<header class="header">
-  <div class="header-inner">
-    <div class="logo" onclick="showPage('home')">
-      <div class="logo-icon">📷</div>
-      <div class="logo-text">
-        <div class="lt1">Mardan Camera Center</div>
-        <div class="lt2">Est. 2010 · Mardan, Pakistan</div>
+<!-- ── TOP HEADER ────────────────────────────── -->
+<div class="top-header">
+  <div class="top-inner">
+    <div class="logo-wrap" onclick="showPage('home')">
+      <img src="mcc-logo.jpg" alt="MCC">
+      <div class="logo-text-wrap">
+        <div class="l1">Mardan Camera Center</div>
+        <div class="l2">Est. 2010 · Mardan, KPK</div>
       </div>
     </div>
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="Search cameras, lenses, drones..." onkeydown="if(event.key==='Enter')doSearch()">
-      <button class="search-btn" onclick="doSearch()">⌕</button>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for cameras, lenses, lighting, drones..." oninput="liveSearch()">
+      <button onclick="doSearch()">🔍</button>
     </div>
-    <div class="h-right">
-      <div class="h-phone">
-        <div class="hp1">Support</div>
-        <div class="hp2">+92 937 123 4567</div>
+
+    <div class="header-right">
+      <div class="support-info">
+        <div class="sup-label">24/7 Support</div>
+        <div class="sup-num">+92 937 123 4567</div>
       </div>
-      <button class="hbtn" onclick="openWA()">
-        <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.95 11.95 0 0012 0C5.37 0 0 5.37 0 12c0 2.12.55 4.18 1.6 6L0 24l6.17-1.61A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.87 1.01 1.04-3.77-.24-.38A9.96 9.96 0 012 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" fill="currentColor" stroke="none"/></svg>
-        <span>WhatsApp</span>
-      </button>
-      <div class="hbtn-wrap">
-        <button class="hbtn cart-btn" onclick="openCart()">
+      <div class="header-icons">
+        <button class="hicon" onclick="openCart()">
           <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          <span>Cart</span>
-          <div class="cart-badge" id="cartBadge">0</div>
+          <span class="icon-label">Cart</span>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <button class="hicon" onclick="showPage('contact')">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="icon-label">Store</span>
         </button>
       </div>
     </div>
   </div>
-</header>
+</div>
 
-<!-- ════════════ NAVBAR ════════════ -->
-<nav>
+<!-- ── MEGA NAVBAR ───────────────────────────── -->
+<nav id="mainNav">
   <div class="nav-inner">
+
     <div class="nav-item">
-      <button class="nav-link on">Cameras <span class="nav-arr">▾</span></button>
-      <div class="nav-drop mega">
-        <div>
-          <div class="mega-col-head">By Brand</div>
-          <div class="ddl" onclick="showCat('cameras','Sony','All')">🔵 Sony Alpha Series</div>
-          <div class="ddl" onclick="showCat('cameras','Canon','All')">🔴 Canon EOS / R Series</div>
-          <div class="ddl" onclick="showCat('cameras','Nikon','All')">🟡 Nikon Z / D Series</div>
-          <div class="ddl" onclick="showCat('cameras','Fujifilm','All')">🟢 Fujifilm X Series</div>
-        </div>
-        <div>
-          <div class="mega-col-head">By Type</div>
-          <div class="ddl" onclick="showCat('cameras','All','Mirrorless')">✨ Mirrorless</div>
-          <div class="ddl" onclick="showCat('cameras','All','DSLR')">📷 DSLR</div>
-          <div class="ddl" onclick="showCat('cameras','All','Cinema')">🎬 Cinema</div>
-          <div class="ddl" onclick="showCat('cameras','All','Action')">🏄 Action Cameras</div>
-        </div>
-        <div>
-          <div class="mega-col-head">Browse</div>
-          <div class="ddl" onclick="showCat('cameras','All','All')">📷 All Cameras</div>
-        </div>
-      </div>
+      <button class="nav-link" onclick="showPage('home')">🏠 Home</button>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">Lenses <span class="nav-arr">▾</span></button>
-      <div class="nav-drop mega">
-        <div>
-          <div class="mega-col-head">By Brand</div>
-          <div class="ddl" onclick="showCat('lenses','Canon','All')">🔴 Canon Lenses (RF/EF)</div>
-          <div class="ddl" onclick="showCat('lenses','Sony','All')">🔵 Sony Lenses (E-Mount)</div>
-          <div class="ddl" onclick="showCat('lenses','Nikon','All')">🟡 Nikon Lenses (F/Z)</div>
+      <button class="nav-link">Cameras <span class="arr">▾</span></button>
+      <div class="mega-drop wide">
+        <div class="mega-col">
+          <div class="mega-col-title">By Brand</div>
+          <div class="dd-link" onclick="showCat('cameras','Canon','All')">🟥 Canon Cameras<span class="dd-arrow">›</span></div>
+          <div class="dd-link" onclick="showCat('cameras','Sony','All')">🔵 Sony Cameras<span class="dd-arrow">›</span></div>
+          <div class="dd-link" onclick="showCat('cameras','Nikon','All')">🟡 Nikon Cameras<span class="dd-arrow">›</span></div>
         </div>
-        <div>
-          <div class="mega-col-head">By Type</div>
-          <div class="ddl" onclick="showCat('lenses','All','Zoom')">🔭 Zoom Lenses</div>
-          <div class="ddl" onclick="showCat('lenses','All','Prime')">🎯 Prime Lenses</div>
+        <div class="mega-col">
+          <div class="mega-col-title">By Type</div>
+          <div class="dd-link" onclick="showCat('cameras','All','DSLR')">📷 DSLR Cameras</div>
+          <div class="dd-link" onclick="showCat('cameras','All','Mirrorless')">🎥 Mirrorless Cameras</div>
         </div>
-        <div>
-          <div class="mega-col-head">Browse</div>
-          <div class="ddl" onclick="showCat('lenses','All','All')">🔭 All Lenses</div>
+        <div class="mega-col">
+          <div class="mega-col-title">All Cameras</div>
+          <div class="dd-link" onclick="showCat('cameras','All','All')">📸 View All Cameras</div>
+          <div class="dd-link" onclick="showCat('drones','All','All')">🚁 Drones</div>
         </div>
       </div>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">Lighting <span class="nav-arr">▾</span></button>
-      <div class="nav-drop">
-        <div class="ddl" onclick="showCat('lights','Aputure','All')">💡 Aputure Amaran</div>
-        <div class="ddl" onclick="showCat('lights','Godox','All')">⚡ Godox</div>
-        <div class="ddl" onclick="showCat('lights','All','COB')">🎬 COB LED Lights</div>
-        <div class="ddl" onclick="showCat('lights','All','RGB')">🌈 RGB Lights</div>
-        <div class="ddl" onclick="showCat('lights','All','All')">💡 All Lighting</div>
+      <button class="nav-link">Lenses <span class="arr">▾</span></button>
+      <div class="mega-drop wide">
+        <div class="mega-col">
+          <div class="mega-col-title">By Mount</div>
+          <div class="dd-link" onclick="showCat('lenses','Canon','All')">🟥 Canon Lenses (RF/EF)</div>
+          <div class="dd-link" onclick="showCat('lenses','Sony','All')">🔵 Sony Lenses (E-Mount)</div>
+          <div class="dd-link" onclick="showCat('lenses','Nikon','All')">🟡 Nikon Lenses (F/Z)</div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col-title">By Type</div>
+          <div class="dd-link" onclick="showCat('lenses','All','Zoom')">🔭 Zoom Lenses</div>
+          <div class="dd-link" onclick="showCat('lenses','All','Prime')">🎯 Prime Lenses</div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col-title">Browse</div>
+          <div class="dd-link" onclick="showCat('lenses','All','All')">🔭 All Lenses</div>
+        </div>
       </div>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">Gimbals <span class="nav-arr">▾</span></button>
-      <div class="nav-drop">
-        <div class="ddl" onclick="showCat('gimbals','DJI','All')">🎬 DJI Ronin Series</div>
-        <div class="ddl" onclick="showCat('gimbals','Zhiyun','All')">🎥 Zhiyun</div>
-        <div class="ddl" onclick="showCat('gimbals','All','All')">🎬 All Gimbals</div>
+      <button class="nav-link">Lighting <span class="arr">▾</span></button>
+      <div class="mega-drop">
+        <div class="dd-link" onclick="showCat('lights','Aputure','All')">💡 Aputure Amaran</div>
+        <div class="dd-link" onclick="showCat('lights','Godox','All')">⚡ Godox</div>
+        <div class="dd-link" onclick="showCat('lights','All','COB')">🎬 COB LED Lights</div>
+        <div class="dd-link" onclick="showCat('lights','All','RGB')">🌈 RGB Lights</div>
+        <div class="dd-link" onclick="showCat('lights','All','All')">💡 All Lighting</div>
       </div>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">Tripods <span class="nav-arr">▾</span></button>
-      <div class="nav-drop">
-        <div class="ddl" onclick="showCat('tripods','Manfrotto','All')">🦯 Manfrotto</div>
-        <div class="ddl" onclick="showCat('tripods','Joby','All')">🐙 Joby GorillaPod</div>
-        <div class="ddl" onclick="showCat('tripods','All','All')">🦯 All Tripods</div>
+      <button class="nav-link">Gimbals <span class="arr">▾</span></button>
+      <div class="mega-drop">
+        <div class="dd-link" onclick="showCat('gimbals','DJI','All')">🎬 DJI Ronin Series</div>
+        <div class="dd-link" onclick="showCat('gimbals','Zhiyun','All')">🎥 Zhiyun</div>
+        <div class="dd-link" onclick="showCat('gimbals','All','All')">🎬 All Gimbals</div>
       </div>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">Microphones <span class="nav-arr">▾</span></button>
-      <div class="nav-drop">
-        <div class="ddl" onclick="showCat('microphones','Rode','All')">🎙️ Rode</div>
-        <div class="ddl" onclick="showCat('microphones','Fifine','All')">🎤 Fifine USB</div>
-        <div class="ddl" onclick="showCat('microphones','Boya','All')">📻 Boya</div>
-        <div class="ddl" onclick="showCat('microphones','All','Wireless')">📡 Wireless Systems</div>
-        <div class="ddl" onclick="showCat('microphones','All','All')">🎙️ All Microphones</div>
+      <button class="nav-link">Tripods <span class="arr">▾</span></button>
+      <div class="mega-drop">
+        <div class="dd-link" onclick="showCat('tripods','Manfrotto','All')">🦯 Manfrotto BeFree</div>
+        <div class="dd-link" onclick="showCat('tripods','Joby','All')">🐙 Joby GorillaPod</div>
+        <div class="dd-link" onclick="showCat('tripods','All','All')">🦯 All Tripods</div>
       </div>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">SD Cards <span class="nav-arr">▾</span></button>
-      <div class="nav-drop">
-        <div class="ddl" onclick="showCat('sdcards','SanDisk','All')">💾 SanDisk</div>
-        <div class="ddl" onclick="showCat('sdcards','Sony','All')">🔵 Sony SD Cards</div>
-        <div class="ddl" onclick="showCat('sdcards','All','UHS-I')">⚡ UHS-I Cards</div>
-        <div class="ddl" onclick="showCat('sdcards','All','UHS-II')">🚀 UHS-II Pro</div>
+      <button class="nav-link">Microphones <span class="arr">▾</span></button>
+      <div class="mega-drop">
+        <div class="dd-link" onclick="showCat('microphones','Rode','All')">🎙️ Rode</div>
+        <div class="dd-link" onclick="showCat('microphones','Fifine','All')">🎤 Fifine USB Mics</div>
+        <div class="dd-link" onclick="showCat('microphones','Boya','All')">📻 Boya</div>
+        <div class="dd-link" onclick="showCat('microphones','All','Wireless')">📡 Wireless Systems</div>
+        <div class="dd-link" onclick="showCat('microphones','All','All')">🎙️ All Microphones</div>
       </div>
     </div>
+
     <div class="nav-item">
-      <button class="nav-link">Drones <span class="nav-arr">▾</span></button>
-      <div class="nav-drop">
-        <div class="ddl" onclick="showCat('drones','DJI','Beginner')">🚁 DJI Mini Series</div>
-        <div class="ddl" onclick="showCat('drones','DJI','Pro')">🎬 DJI Pro Series</div>
-        <div class="ddl" onclick="showCat('drones','All','All')">🚁 All Drones</div>
+      <button class="nav-link">SD Cards <span class="arr">▾</span></button>
+      <div class="mega-drop">
+        <div class="dd-link" onclick="showCat('sdcards','SanDisk','All')">💾 SanDisk</div>
+        <div class="dd-link" onclick="showCat('sdcards','Sony','All')">🔵 Sony SD Cards</div>
+        <div class="dd-link" onclick="showCat('sdcards','All','UHS-I')">⚡ UHS-I Cards</div>
+        <div class="dd-link" onclick="showCat('sdcards','All','UHS-II')">🚀 UHS-II / Pro</div>
       </div>
     </div>
+
+    <div class="nav-item">
+      <button class="nav-link">Drones <span class="arr">▾</span></button>
+      <div class="mega-drop">
+        <div class="dd-link" onclick="showCat('drones','DJI','Beginner')">🚁 DJI Mini Series</div>
+        <div class="dd-link" onclick="showCat('drones','DJI','Pro')">🎬 DJI Pro Series</div>
+        <div class="dd-link" onclick="showCat('drones','All','All')">🚁 All Drones</div>
+      </div>
+    </div>
+
     <div class="nav-extra">
       <button class="nav-link" onclick="showPage('production')">🎞️ Production</button>
       <button class="nav-link" onclick="showPage('team')">👥 Team</button>
@@ -652,206 +561,146 @@ footer{background:var(--ink2);}
 <div class="page active" id="page-home">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-lines">
-      <div class="hero-line"></div>
-      <div class="hero-line"></div>
-      <div class="hero-line"></div>
-    </div>
-    <div class="hero-orb orb1"></div>
-    <div class="hero-orb orb2"></div>
-    <div class="hero-inner">
-      <div class="fade-up">
-        <div class="hero-eyebrow">🇵🇰 Pakistan's #1 Camera Store</div>
-        <h1 class="hero-title">
-          Gear Made for<br>
-          <em>Every Story</em><br>
-          <span class="ht-outline">You Tell.</span>
-        </h1>
-        <p class="hero-desc">From beginner DSLRs to cinema-grade mirrorless systems — Mardan Camera Center has everything you need, backed by expert advice and 14 years of trust.</p>
-        <div class="hero-actions">
-          <button class="btn-gold" onclick="showCat('cameras','All','All')">Shop Cameras →</button>
-          <button class="btn-ghost" onclick="document.getElementById('home-cats').scrollIntoView({behavior:'smooth'})">Browse All Categories</button>
+  <div class="hero">
+    <div class="hero-slide">
+      <div class="hero-bg"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div>
+          <span class="hero-label">🇵🇰 Pakistan's Best Camera Store</span>
+          <h1 class="hero-title">Professional Gear for<br><em>Every Photographer</em></h1>
+          <p class="hero-desc">From beginner DSLRs to cinema-grade equipment — Mardan Camera Center has everything you need. Trusted by 10,000+ photographers since 2010.</p>
+          <div class="hero-btns">
+            <button class="btn-red" onclick="showCat('cameras','All','All')">Shop Cameras →</button>
+            <button class="btn-white" onclick="document.getElementById('home-cats').scrollIntoView({behavior:'smooth'})">Browse All Categories</button>
+          </div>
         </div>
-        <div class="hero-stats">
-          <div class="hstat"><div class="hstat-num">14+</div><div class="hstat-lbl">Years of Trust</div></div>
-          <div class="hstat-div"></div>
-          <div class="hstat"><div class="hstat-num">10K+</div><div class="hstat-lbl">Happy Customers</div></div>
-          <div class="hstat-div"></div>
-          <div class="hstat"><div class="hstat-num">2K+</div><div class="hstat-lbl">Products In Stock</div></div>
-        </div>
-      </div>
-      <div class="hero-visual fade-up fade-up-d2">
-        <div class="hero-3d-stage">
-          <div class="h3d-ring"></div>
-          <div class="h3d-ring"></div>
-          <div class="h3d-ring"></div>
-          <div class="h3d-center">
-            <span class="h3d-cam" id="heroEmoji">📷</span>
-          </div>
-          <div class="ribbon">🔥 New Arrivals In Stock</div>
-          <div class="h3d-card hc1">
-            <div class="hcard-val" id="heroStatVal">PKR 549,999</div>
-            <div class="hcard-sub" id="heroStatKey">Sony A7 IV · In Stock</div>
-            <div class="hcard-badge">Available Now</div>
-          </div>
-          <div class="h3d-card hc2">
-            <div class="hcard-val">10,000+</div>
-            <div class="hcard-sub">Happy Customers</div>
-          </div>
-          <div class="h3d-card hc3">
-            <div class="hcard-val">⭐ 4.9/5</div>
-            <div class="hcard-sub">Average Rating</div>
+        <div class="hero-visual">
+          <div class="hero-cam-circle">
+            <div class="hero-ribbon">🔥 New Arrivals In Stock</div>
+            <span class="hero-cam-emoji" id="heroEmoji">📷</span>
+            <div class="hero-stat hs1">
+              <div class="hs-val" id="heroStatVal">PKR 549,999</div>
+              <div class="hs-key" id="heroStatKey">Sony A7 IV · In Stock</div>
+            </div>
+            <div class="hero-stat hs2">
+              <div class="hs-val">10,000+</div>
+              <div class="hs-key">Happy Customers</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- TRUST STRIP -->
-  <div class="trust-strip">
-    <div class="trust-inner">
-      <div class="trust-item"><div class="trust-ico">🚚</div><div><div class="trust-t1">Free Delivery</div><div class="trust-t2">On orders over PKR 50,000</div></div></div>
-      <div class="trust-item"><div class="trust-ico">✅</div><div><div class="trust-t1">100% Authentic</div><div class="trust-t2">Official brand products only</div></div></div>
-      <div class="trust-item"><div class="trust-ico">🔄</div><div><div class="trust-t1">7-Day Returns</div><div class="trust-t2">Hassle-free return policy</div></div></div>
-      <div class="trust-item"><div class="trust-ico">🛡️</div><div><div class="trust-t1">Manufacturer Warranty</div><div class="trust-t2">Full warranty on all products</div></div></div>
-      <div class="trust-item"><div class="trust-ico">💳</div><div><div class="trust-t1">Cash on Delivery</div><div class="trust-t2">Nationwide delivery available</div></div></div>
+  <div class="hero-strip">
+    <div class="strip-inner">
+      <div class="strip-item"><div class="strip-icon">🚚</div><div><div class="strip-title">Free Delivery</div><div class="strip-sub">On orders over PKR 50,000</div></div></div>
+      <div class="strip-item"><div class="strip-icon">✅</div><div><div class="strip-title">100% Authentic</div><div class="strip-sub">Official brand products only</div></div></div>
+      <div class="strip-item"><div class="strip-icon">🔄</div><div><div class="strip-title">7-Day Returns</div><div class="strip-sub">Hassle-free return policy</div></div></div>
+      <div class="strip-item"><div class="strip-icon">💳</div><div><div class="strip-title">Cash on Delivery</div><div class="strip-sub">Available across Pakistan</div></div></div>
+      <div class="strip-item"><div class="strip-icon">📞</div><div><div class="strip-title">Expert Support</div><div class="strip-sub">Photography specialists</div></div></div>
     </div>
   </div>
 
   <!-- CATEGORIES -->
-  <section class="sec sec-cream" id="home-cats">
-    <div class="wrap">
-      <div class="sec-hd-row sec-hd" style="margin-bottom:28px;">
-        <div class="sec-hd">
-          <div class="sec-tag">Shop by Category</div>
-          <h2 class="sec-h2">Find Your Perfect <em>Gear</em></h2>
+  <div class="section section-white" id="home-cats">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-title-wrap">
+          <div class="sec-title-bar"></div>
+          <div><div class="sec-title">Shop by Category</div><div class="sec-sub">Find exactly what you need</div></div>
         </div>
-        <button class="sec-link" onclick="showCat('cameras','All','All')">View All Categories →</button>
       </div>
-      <div class="cat-grid">
-        <div class="cat-card" onclick="showCat('cameras','All','All')"><span class="cat-ico">📷</span><div class="cat-name">Cameras</div><div class="cat-cnt">45+ products</div></div>
-        <div class="cat-card" onclick="showCat('lenses','All','All')"><span class="cat-ico">🔭</span><div class="cat-name">Lenses</div><div class="cat-cnt">60+ products</div></div>
-        <div class="cat-card" onclick="showCat('lights','All','All')"><span class="cat-ico">💡</span><div class="cat-name">Lighting</div><div class="cat-cnt">30+ products</div></div>
-        <div class="cat-card" onclick="showCat('gimbals','All','All')"><span class="cat-ico">🎬</span><div class="cat-name">Gimbals</div><div class="cat-cnt">20+ products</div></div>
-        <div class="cat-card" onclick="showCat('tripods','All','All')"><span class="cat-ico">🦯</span><div class="cat-name">Tripods</div><div class="cat-cnt">25+ products</div></div>
-        <div class="cat-card" onclick="showCat('microphones','All','All')"><span class="cat-ico">🎙️</span><div class="cat-name">Microphones</div><div class="cat-cnt">35+ products</div></div>
-        <div class="cat-card" onclick="showCat('sdcards','All','All')"><span class="cat-ico">💾</span><div class="cat-name">SD Cards</div><div class="cat-cnt">40+ products</div></div>
-        <div class="cat-card" onclick="showCat('drones','All','All')"><span class="cat-ico">🚁</span><div class="cat-name">Drones</div><div class="cat-cnt">15+ products</div></div>
-        <div class="cat-card" onclick="showCat('cameras','All','Action')"><span class="cat-ico">🏄</span><div class="cat-name">Action Cams</div><div class="cat-cnt">10+ products</div></div>
-        <div class="cat-card" onclick="showPage('production')"><span class="cat-ico">🎞️</span><div class="cat-name">Production</div><div class="cat-cnt">Event packages</div></div>
+      <div class="cat-boxes">
+        <div class="cat-box" onclick="showCat('cameras','All','All')"><span class="cat-box-icon">📷</span><div class="cat-box-name">Cameras</div><div class="cat-box-count">Canon · Sony · Nikon</div></div>
+        <div class="cat-box" onclick="showCat('lenses','All','All')"><span class="cat-box-icon">🔭</span><div class="cat-box-name">Lenses</div><div class="cat-box-count">RF · E-Mount · F-Mount</div></div>
+        <div class="cat-box" onclick="showCat('lights','All','All')"><span class="cat-box-icon">💡</span><div class="cat-box-name">Lighting</div><div class="cat-box-count">Aputure · Godox</div></div>
+        <div class="cat-box" onclick="showCat('gimbals','All','All')"><span class="cat-box-icon">🎬</span><div class="cat-box-name">Gimbals</div><div class="cat-box-count">DJI · Zhiyun</div></div>
+        <div class="cat-box" onclick="showCat('tripods','All','All')"><span class="cat-box-icon">🦯</span><div class="cat-box-name">Tripods</div><div class="cat-box-count">Manfrotto · Joby</div></div>
+        <div class="cat-box" onclick="showCat('microphones','All','All')"><span class="cat-box-icon">🎙️</span><div class="cat-box-name">Microphones</div><div class="cat-box-count">Rode · Fifine · Boya</div></div>
+        <div class="cat-box" onclick="showCat('sdcards','All','All')"><span class="cat-box-icon">💾</span><div class="cat-box-name">SD Cards</div><div class="cat-box-count">SanDisk · Sony</div></div>
+        <div class="cat-box" onclick="showCat('drones','All','All')"><span class="cat-box-icon">🚁</span><div class="cat-box-name">Drones</div><div class="cat-box-count">DJI Mini · Air · Mavic</div></div>
+        <div class="cat-box" onclick="showPage('production')"><span class="cat-box-icon">🎞️</span><div class="cat-box-name">Production</div><div class="cat-box-count">Event packages</div></div>
+        <div class="cat-box" onclick="showPage('team')"><span class="cat-box-icon">👥</span><div class="cat-box-name">Our Team</div><div class="cat-box-count">25+ professionals</div></div>
       </div>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track" id="marqueeTrack">
-      <span class="marquee-item">Sony Alpha<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Canon EOS R<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Nikon Z Series<span class="marquee-dot"></span></span>
-      <span class="marquee-item">DJI Drones<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Rode Microphones<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Godox Lighting<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Aputure Amaran<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Fujifilm X100<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Manfrotto Tripods<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Zhiyun Gimbals<span class="marquee-dot"></span></span>
-      <span class="marquee-item">SanDisk Extreme<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Sony Alpha<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Canon EOS R<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Nikon Z Series<span class="marquee-dot"></span></span>
-      <span class="marquee-item">DJI Drones<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Rode Microphones<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Godox Lighting<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Aputure Amaran<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Fujifilm X100<span class="marquee-dot"></span></span>
-      <span class="marquee-item">Manfrotto Tripods<span class="marquee-dot"></span></span>
     </div>
   </div>
 
-  <!-- FEATURED PRODUCTS -->
-  <section class="sec sec-white">
-    <div class="wrap">
-      <div class="sec-hd-row sec-hd">
-        <div>
-          <div class="sec-tag">Bestsellers</div>
-          <h2 class="sec-h2">Featured <em>Products</em></h2>
+  <!-- TABBED FEATURED PRODUCTS -->
+  <div class="section section-gray">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-title-wrap">
+          <div class="sec-title-bar"></div>
+          <div><div class="sec-title">Featured Products</div><div class="sec-sub">Our best selling gear</div></div>
         </div>
-        <button class="sec-link" onclick="showCat('cameras','All','All')">Shop All →</button>
+        <button class="view-all" onclick="showCat('cameras','All','All')">View All →</button>
       </div>
-      <div class="tabs" id="homeTabs">
-        <button class="tab on" onclick="homeTab(this,'cameras')">Cameras</button>
-        <button class="tab" onclick="homeTab(this,'lenses')">Lenses</button>
-        <button class="tab" onclick="homeTab(this,'lights')">Lighting</button>
-        <button class="tab" onclick="homeTab(this,'gimbals')">Gimbals</button>
-        <button class="tab" onclick="homeTab(this,'drones')">Drones</button>
+      <div class="cat-tabs" id="homeTabs">
+        <button class="cat-tab active" onclick="homeTab('cameras',this)">📷 Cameras</button>
+        <button class="cat-tab" onclick="homeTab('lenses',this)">🔭 Lenses</button>
+        <button class="cat-tab" onclick="homeTab('lights',this)">💡 Lighting</button>
+        <button class="cat-tab" onclick="homeTab('gimbals',this)">🎬 Gimbals</button>
+        <button class="cat-tab" onclick="homeTab('microphones',this)">🎙️ Microphones</button>
+        <button class="cat-tab" onclick="homeTab('drones',this)">🚁 Drones</button>
+        <button class="cat-tab" onclick="homeTab('sdcards',this)">💾 SD Cards</button>
       </div>
-      <div class="pgrid g5" id="homeGrid"></div>
+      <div class="prod-grid g5" id="homeProdGrid"></div>
     </div>
-  </section>
+  </div>
 
   <!-- BANNERS -->
-  <section class="sec sec-cream" style="padding-top:0;">
-    <div class="wrap">
+  <div class="section section-white">
+    <div class="container">
       <div class="banner-grid">
-        <div class="banner banner-dark" onclick="showCat('cameras','All','Mirrorless')">
+        <div class="banner-card banner-card-1 bc1" onclick="showCat('cameras','All','All')">
           <div>
-            <div class="banner-tag">New Arrivals</div>
-            <div class="banner-title">Mirrorless<br>Camera Collection</div>
-            <div class="banner-sub">Sony, Canon, Nikon & Fujifilm in stock</div>
+            <div class="banner-label">New Arrivals 2024</div>
+            <div class="banner-title">Canon EOS R6<br>Mark II</div>
+            <div class="banner-desc">40MP · 40fps RAW · 6K Video · IBIS</div>
             <button class="banner-btn">Shop Now →</button>
           </div>
         </div>
-        <div class="banner banner-gold" onclick="showPage('production')">
+        <div class="banner-card banner-card-2 bc2" onclick="showCat('gimbals','DJI','All')">
           <div>
-            <div class="banner-tag">Event Coverage</div>
-            <div class="banner-title">Full Cinematic<br>Production Packages</div>
-            <div class="banner-sub">From PKR 20,000 for complete crew + gear</div>
-            <button class="banner-btn">Get a Quote →</button>
+            <div class="banner-label">Professional Series</div>
+            <div class="banner-title">DJI RS 4 Pro<br>Gimbal</div>
+            <div class="banner-desc">4.5kg Payload · OLED · ActiveTrack Pro</div>
+            <button class="banner-btn">Shop Now →</button>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- BRANDS -->
-  <div class="brands-sec">
-    <div class="wrap">
-      <div class="sec-hd center" style="margin-bottom:32px;">
-        <div class="sec-tag">Our Partners</div>
-        <h2 class="sec-h2" style="color:#fff;">Official <em>Brand</em> Partners</h2>
-      </div>
+  <div class="brands-section">
+    <div class="container">
       <div class="brands-row">
-        <span class="brand-lbl">SONY</span>
-        <span class="brand-lbl">CANON</span>
-        <span class="brand-lbl">NIKON</span>
-        <span class="brand-lbl">FUJIFILM</span>
-        <span class="brand-lbl">DJI</span>
-        <span class="brand-lbl">RODE</span>
-        <span class="brand-lbl">GODOX</span>
-        <span class="brand-lbl">APUTURE</span>
-        <span class="brand-lbl">SANDISK</span>
+        <div class="brand-pill" onclick="showCat('cameras','Canon','All')">Canon</div>
+        <div class="brand-pill" onclick="showCat('cameras','Sony','All')">Sony</div>
+        <div class="brand-pill" onclick="showCat('cameras','Nikon','All')">Nikon</div>
+        <div class="brand-pill" onclick="showCat('lights','Aputure','All')">Aputure</div>
+        <div class="brand-pill" onclick="showCat('lights','Godox','All')">Godox</div>
+        <div class="brand-pill" onclick="showCat('drones','DJI','All')">DJI</div>
+        <div class="brand-pill" onclick="showCat('microphones','Rode','All')">Rode</div>
+        <div class="brand-pill" onclick="showCat('sdcards','SanDisk','All')">SanDisk</div>
+        <div class="brand-pill" onclick="showCat('gimbals','Zhiyun','All')">Zhiyun</div>
+        <div class="brand-pill" onclick="showCat('tripods','Manfrotto','All')">Manfrotto</div>
       </div>
     </div>
   </div>
 
-  <!-- STATS -->
-  <section class="sec sec-ink" style="padding:0;">
-    <div class="stats-grid">
-      <div class="stat-box"><div class="stat-val">10<span>K+</span></div><div class="stat-lbl">Happy Customers</div></div>
-      <div class="stat-box"><div class="stat-val">14<span>+</span></div><div class="stat-lbl">Years Experience</div></div>
-      <div class="stat-box"><div class="stat-val">2<span>K+</span></div><div class="stat-lbl">Products in Stock</div></div>
-      <div class="stat-box"><div class="stat-val">4.9<span>★</span></div><div class="stat-lbl">Average Rating</div></div>
-    </div>
-  </section>
-
   <!-- TESTIMONIALS -->
-  <section class="sec sec-white">
-    <div class="wrap">
-      <div class="sec-hd center" style="margin-bottom:36px;">
-        <div class="sec-tag">Customer Reviews</div>
-        <h2 class="sec-h2">What Our <em>Customers</em> Say</h2>
+  <div class="section section-white">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-title-wrap">
+          <div class="sec-title-bar"></div>
+          <div><div class="sec-title">Customer Reviews</div></div>
+        </div>
       </div>
       <div class="test-grid">
         <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Been buying from MCC for 5 years. Always genuine products, best prices in KPK, and expert advice. Got my Sony A7 IV delivered to Peshawar in 2 days!"</div><div class="test-author"><div class="test-av">A</div><div><div class="test-name">Ahmad Raza</div><div class="test-loc">📍 Peshawar</div></div></div></div>
@@ -859,28 +708,27 @@ footer{background:var(--ink2);}
         <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Best camera store in Pakistan. The staff knows their gear inside out. Built my complete filmmaking setup under PKR 400K with their help. Amazing service!"</div><div class="test-author"><div class="test-av">U</div><div><div class="test-name">Usman Malik</div><div class="test-loc">📍 Islamabad</div></div></div></div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="foot-top">
-      <div class="wrap">
+      <div class="container">
         <div class="foot-grid">
           <div>
-            <div class="foot-logo" onclick="showPage('home')">
-              <div class="foot-logo-ico">📷</div>
-              <div><div class="foot-brand">Mardan Camera Center</div><div class="foot-sub">Est. 2010 · Pakistan</div></div>
+            <div class="foot-logo" onclick="showPage('home')" style="cursor:pointer;">
+              <img src="mcc-logo.jpg" alt="MCC">
+              <div class="foot-logo-text"><div class="fl1">Mardan Camera Center</div><div class="fl2">Est. 2010</div></div>
             </div>
             <p class="foot-desc">Pakistan's most trusted destination for professional cameras, lenses, drones, and filmmaking equipment. Serving photographers nationwide since 2010.</p>
             <div class="foot-social">
-              <button class="fsoc">📷</button>
-              <button class="fsoc">▶️</button>
-              <button class="fsoc">👥</button>
-              <button class="fsoc" onclick="openWA()">💬</button>
+              <button class="soc">📷</button>
+              <button class="soc">▶️</button>
+              <button class="soc">👥</button>
             </div>
           </div>
           <div>
-            <div class="foot-col-h">Products</div>
+            <div class="foot-col-title">Products</div>
             <ul class="foot-links">
               <li><a onclick="showCat('cameras','All','All')">Cameras</a></li>
               <li><a onclick="showCat('lenses','All','All')">Lenses</a></li>
@@ -893,7 +741,7 @@ footer{background:var(--ink2);}
             </ul>
           </div>
           <div>
-            <div class="foot-col-h">Company</div>
+            <div class="foot-col-title">Company</div>
             <ul class="foot-links">
               <li><a onclick="showPage('home')">Home</a></li>
               <li><a onclick="showPage('production')">Production</a></li>
@@ -902,19 +750,19 @@ footer{background:var(--ink2);}
             </ul>
           </div>
           <div>
-            <div class="foot-col-h">Contact</div>
-            <div class="foot-ci"><span class="foot-ci-ico">📍</span><span>Main Bazaar, Mardan, Khyber Pakhtunkhwa</span></div>
-            <div class="foot-ci"><span class="foot-ci-ico">📞</span><span>+92 937 123 4567</span></div>
-            <div class="foot-ci"><span class="foot-ci-ico">✉️</span><span>info@mardancamera.pk</span></div>
-            <div class="foot-ci"><span class="foot-ci-ico">🕐</span><span>Mon–Sat: 9am–8pm<br>Sun: 11am–5pm</span></div>
+            <div class="foot-col-title">Contact</div>
+            <div class="foot-contact-item"><span class="fci">📍</span><span>Main Bazaar, Mardan, Khyber Pakhtunkhwa</span></div>
+            <div class="foot-contact-item"><span class="fci">📞</span><span>+92 937 123 4567</span></div>
+            <div class="foot-contact-item"><span class="fci">✉️</span><span>info@mardancamera.pk</span></div>
+            <div class="foot-contact-item"><span class="fci">🕐</span><span>Mon–Sat: 9am–8pm<br>Sun: 11am–5pm</span></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="wrap">
+    <div class="container">
       <div class="foot-bottom">
-        <div class="foot-copy">© 2025 Mardan Camera Center. All rights reserved.</div>
-        <div class="foot-copy">🇵🇰 Proudly serving all Pakistan since 2010</div>
+        <div>© 2024 Mardan Camera Center. All rights reserved.</div>
+        <div>🇵🇰 Serving all Pakistan since 2010</div>
       </div>
     </div>
   </footer>
@@ -924,24 +772,28 @@ footer{background:var(--ink2);}
      CATEGORY PAGE
 ════════════════════════════════════════════ -->
 <div class="page" id="page-category">
-  <div class="cat-hero-page">
-    <div class="wrap">
-      <div class="breadcrumb"><a onclick="showPage('home')">Home</a> <span style="color:rgba(255,255,255,0.2);">›</span> <span id="catBreadcrumb">Cameras</span></div>
-      <div class="cat-page-title" id="catPageTitle">All Cameras</div>
-      <div class="cat-page-sub" id="catPageSub">Professional cameras from top brands</div>
+  <div class="cat-hero">
+    <div class="cat-hero-inner">
+      <div class="breadcrumb">
+        <a onclick="showPage('home')">Home</a> <span style="color:rgba(255,255,255,.2);">›</span> <span id="catBreadcrumb">Cameras</span>
+      </div>
+      <div class="cat-hero-title" id="catPageTitle">All Cameras</div>
+      <div class="cat-hero-sub" id="catPageSub">Professional cameras from top brands</div>
     </div>
   </div>
-  <div class="wrap" style="padding-bottom:64px;">
+  <div class="container" style="padding-bottom:60px;">
+    <!-- Filters -->
     <div class="filter-bar">
-      <span class="filter-lbl">Brand:</span>
+      <span class="filter-label">Brand:</span>
       <div id="brandBtns" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
       <div class="filter-sep"></div>
-      <span class="filter-lbl">Type:</span>
+      <span class="filter-label">Type:</span>
       <div id="subBtns" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
     </div>
-    <div class="toolbar">
-      <span class="results-lbl" id="resultsLabel">Showing all products</span>
-      <div style="display:flex;align-items:center;gap:8px;">
+    <!-- Toolbar -->
+    <div class="products-toolbar">
+      <span class="results-label" id="resultsLabel">Showing all products</span>
+      <div class="toolbar-right">
         <select class="sort-sel" id="sortSel" onchange="applySort()">
           <option value="featured">Sort: Featured</option>
           <option value="price-asc">Price: Low → High</option>
@@ -949,14 +801,14 @@ footer{background:var(--ink2);}
           <option value="name">Name: A–Z</option>
           <option value="rating">Best Rated</option>
         </select>
-        <div class="grid-btns">
-          <button class="gbtn" onclick="setGrid('g3')">▦ 3</button>
-          <button class="gbtn on" onclick="setGrid('g4')">▦ 4</button>
-          <button class="gbtn" onclick="setGrid('g5')">▦ 5</button>
+        <div class="size-btns">
+          <button class="size-btn" onclick="setGrid('g3')">▦ 3</button>
+          <button class="size-btn on" onclick="setGrid('g4')">▦ 4</button>
+          <button class="size-btn" onclick="setGrid('g5')">▦ 5</button>
         </div>
       </div>
     </div>
-    <div class="pgrid g4" id="catGrid"></div>
+    <div class="prod-grid g4" id="catGrid"></div>
   </div>
 </div>
 
@@ -964,403 +816,373 @@ footer{background:var(--ink2);}
      PRODUCT DETAIL
 ════════════════════════════════════════════ -->
 <div class="page" id="page-product">
-  <div class="wrap">
-    <div style="padding:20px 0 0;font-size:12px;color:var(--muted);">
-      <a onclick="showPage('home')" style="color:var(--gold);cursor:pointer;">Home</a> ›
-      <a id="detailCatLink" style="color:var(--gold);cursor:pointer;">Category</a> ›
-      <span id="detailBreadTitle">Product</span>
+  <div class="container">
+    <div class="detail-breadcrumb">
+      <div class="breadcrumb" style="color:#999;font-size:13px;">
+        <a onclick="showPage('home')" style="color:#e8282a;cursor:pointer;">Home</a> ›
+        <a id="detailCatLink" style="color:#e8282a;cursor:pointer;">Category</a> ›
+        <span id="detailBreadTitle" style="color:#333;">Product</span>
+      </div>
     </div>
     <div class="detail-grid" id="detailContent"></div>
   </div>
-  <section class="sec sec-cream">
-    <div class="wrap">
-      <div class="sec-hd-row sec-hd">
-        <div><div class="sec-tag">You May Also Like</div><h2 class="sec-h2">Related <em>Products</em></h2></div>
+  <div class="section section-gray">
+    <div class="container">
+      <div class="sec-head" style="margin-bottom:20px;">
+        <div class="sec-title-wrap"><div class="sec-title-bar"></div><div class="sec-title">Related Products</div></div>
       </div>
-      <div class="pgrid g5" id="relatedGrid"></div>
+      <div class="prod-grid g5" id="relatedGrid"></div>
     </div>
-  </section>
+  </div>
 </div>
 
 <!-- ════════════════════════════════════════════
-     PRODUCTION PAGE
+     PRODUCTION
 ════════════════════════════════════════════ -->
 <div class="page" id="page-production">
-  <div class="cat-hero-page">
-    <div class="wrap">
-      <div class="breadcrumb"><a onclick="showPage('home')">Home</a> › <span>Production</span></div>
-      <div class="cat-page-title">Event Production Packages</div>
-      <div class="cat-page-sub">Full crew + equipment for every budget</div>
+  <div class="cat-hero"><div class="cat-hero-inner"><div class="breadcrumb"><a onclick="showPage('home')">Home</a> › <span>Production</span></div><div class="cat-hero-title">Event Production Packages</div><div class="cat-hero-sub">Full crew + equipment for every budget</div></div></div>
+  <div class="container" style="padding:48px 24px 80px;">
+    <div class="prod-grid g3">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:32px;transition:all .3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gray3);margin-bottom:8px;">BASIC</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);margin-bottom:8px;">Budget Coverage</div>
+        <div style="font-size:22px;font-weight:800;color:var(--dark);margin-bottom:20px;">PKR 20,000 – 45,000</div>
+        <ul style="list-style:none;font-size:13.5px;color:var(--text2);">
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ 1–2 Camera operators</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ 1 Primary DSLR camera</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ Tripod + handheld shooting</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ Basic lighting (1–2 LEDs)</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ On-camera DSLR mic</li>
+          <li style="padding:8px 0;display:flex;gap:8px;">✓ Highlight edit 3–7 min</li>
+        </ul>
+        <button class="btn-white" style="width:100%;margin-top:24px;border-color:var(--border);color:var(--dark);" onclick="showPage('contact')">Get a Quote →</button>
+      </div>
+      <div style="background:var(--dark);border-radius:12px;padding:32px;position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:4px 16px;border-radius:100px;">MOST POPULAR</div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;">MID RANGE</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:8px;">Cinematic Coverage</div>
+        <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:20px;">PKR 50,000 – 80,000</div>
+        <ul style="list-style:none;font-size:13.5px;color:rgba(255,255,255,.6);">
+          <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;"><span style="color:var(--red);">✓</span> 2–3 Camera operators + assistant</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;"><span style="color:var(--red);">✓</span> Multi-angle DSLR + mirrorless + gimbal</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;"><span style="color:var(--red);">✓</span> 1 Drone (establishing shots)</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;"><span style="color:var(--red);">✓</span> 2–3 LED panel lights + diffusion</li>
+          <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;"><span style="color:var(--red);">✓</span> Wireless lav mic + shotgun</li>
+          <li style="padding:8px 0;display:flex;gap:8px;"><span style="color:var(--red);">✓</span> Cinematic highlight 5–10 min</li>
+        </ul>
+        <button class="btn-red" style="width:100%;margin-top:24px;" onclick="showPage('contact')">Get a Quote →</button>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:32px;transition:all .3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#ffd700;margin-bottom:8px;">PREMIUM</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);margin-bottom:8px;">Full Cinematic</div>
+        <div style="font-size:22px;font-weight:800;color:var(--dark);margin-bottom:20px;">PKR 100,000+</div>
+        <ul style="list-style:none;font-size:13.5px;color:var(--text2);">
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ 4–6 Camera operators + full crew</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ Cinema gimbal + drone coverage</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ Full 3-point lighting setup</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ Dedicated sound engineer</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;">✓ Heavy color grading</li>
+          <li style="padding:8px 0;display:flex;gap:8px;">✓ Full film 10–20 min + social cuts</li>
+        </ul>
+        <button class="btn-red" style="width:100%;margin-top:24px;" onclick="showPage('contact')">Get a Quote →</button>
+      </div>
     </div>
   </div>
-  <section class="sec sec-cream">
-    <div class="wrap">
-      <div class="sec-hd center" style="margin-bottom:40px;">
-        <div class="sec-tag">Choose Your Package</div>
-        <h2 class="sec-h2">Professional <em>Coverage</em> Packages</h2>
-        <p class="sec-p">From intimate gatherings to grand weddings — we cover it all with cinematic quality.</p>
-      </div>
-      <div class="prod-plans">
-        <div class="plan">
-          <div class="plan-tier">Basic</div>
-          <div class="plan-name">Budget Coverage</div>
-          <div class="plan-price">PKR 20,000 – 45,000</div>
-          <ul class="plan-items">
-            <li>1–2 Camera operators</li>
-            <li>1 Primary DSLR camera</li>
-            <li>Tripod + handheld shooting</li>
-            <li>Basic lighting (1–2 LEDs)</li>
-            <li>On-camera DSLR mic</li>
-            <li>Highlight edit 3–7 min</li>
-          </ul>
-          <button class="plan-btn" onclick="showPage('contact')">Get a Quote →</button>
-        </div>
-        <div class="plan featured">
-          <div class="plan-badge">Most Popular</div>
-          <div class="plan-tier">Mid Range</div>
-          <div class="plan-name">Cinematic Coverage</div>
-          <div class="plan-price">PKR 50,000 – 80,000</div>
-          <ul class="plan-items">
-            <li>2–3 Camera operators + assistant</li>
-            <li>Multi-angle DSLR + mirrorless + gimbal</li>
-            <li>1 Drone (establishing shots)</li>
-            <li>2–3 LED panel lights + diffusion</li>
-            <li>Wireless lav mic + shotgun</li>
-            <li>Cinematic highlight 5–10 min</li>
-          </ul>
-          <button class="plan-btn" onclick="showPage('contact')">Get a Quote →</button>
-        </div>
-        <div class="plan">
-          <div class="plan-tier" style="color:var(--gold-dim);">Premium</div>
-          <div class="plan-name">Full Cinematic</div>
-          <div class="plan-price">PKR 100,000+</div>
-          <ul class="plan-items">
-            <li>4–6 Camera operators + full crew</li>
-            <li>Cinema gimbal + drone coverage</li>
-            <li>Full 3-point lighting setup</li>
-            <li>Dedicated sound engineer</li>
-            <li>Heavy color grading</li>
-            <li>Full film 10–20 min + social cuts</li>
-          </ul>
-          <button class="plan-btn" onclick="showPage('contact')">Get a Quote →</button>
-        </div>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- ════════════════════════════════════════════
-     TEAM PAGE
+     TEAM
 ════════════════════════════════════════════ -->
 <div class="page" id="page-team">
-  <div class="cat-hero-page">
-    <div class="wrap">
-      <div class="breadcrumb"><a onclick="showPage('home')">Home</a> › <span>Team</span></div>
-      <div class="cat-page-title">Meet Our Team</div>
-      <div class="cat-page-sub">25+ professionals behind every frame</div>
+  <div class="cat-hero"><div class="cat-hero-inner"><div class="breadcrumb"><a onclick="showPage('home')">Home</a> › <span>Team</span></div><div class="cat-hero-title">Meet Our Team</div><div class="cat-hero-sub">25+ professionals behind every frame</div></div></div>
+  <div class="container" style="padding:48px 24px 80px;">
+    <div class="prod-grid g4">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px;text-align:center;transition:all .3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:60px;height:60px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;">👑</div><div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px;">CEO / Executive Producer</div><div style="font-size:17px;font-weight:800;color:var(--dark);margin-bottom:6px;">Afaq Pazir</div><div style="font-size:13px;color:var(--gray3);">Creative direction · Brand strategy · Production control</div></div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px;text-align:center;transition:all .3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:60px;height:60px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;">🎬</div><div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Shooting Team</div><div style="font-size:17px;font-weight:800;color:var(--dark);margin-bottom:6px;">20 Professionals</div><div style="font-size:13px;color:var(--gray3);">Multi-cam · Cinematic storytelling · Event coverage</div></div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px;text-align:center;transition:all .3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:60px;height:60px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;">💡</div><div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Lighting Team</div><div style="font-size:17px;font-weight:800;color:var(--dark);margin-bottom:6px;">4 Specialists</div><div style="font-size:13px;color:var(--gray3);">3-point setups · Softbox · Color temperature control</div></div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px;text-align:center;transition:all .3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:60px;height:60px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;">🚁</div><div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Drone Operators</div><div style="font-size:17px;font-weight:800;color:var(--dark);margin-bottom:6px;">2 Operators</div><div style="font-size:13px;color:var(--gray3);">DJI Air/Mavic · Aerial cinematography · FPV</div></div>
     </div>
   </div>
-  <section class="sec sec-cream">
-    <div class="wrap">
-      <div class="team-grid">
-        <div class="team-card"><div class="team-av">👑</div><div class="team-role">CEO / Executive Producer</div><div class="team-name">Afaq Pazir</div><div class="team-desc">Creative direction · Brand strategy · Production control</div></div>
-        <div class="team-card"><div class="team-av">🎬</div><div class="team-role">Cinematographer</div><div class="team-name">Bilal Ahmed</div><div class="team-desc">Cinema camera operation · Color grading · Visual storytelling</div></div>
-        <div class="team-card"><div class="team-av">🎙️</div><div class="team-role">Sound Engineer</div><div class="team-name">Hamid Khan</div><div class="team-desc">Audio capture · Mixing · On-location sound design</div></div>
-        <div class="team-card"><div class="team-av">🚁</div><div class="team-role">Drone Pilot</div><div class="team-name">Adnan Zafar</div><div class="team-desc">Aerial cinematography · FPV racing · Flight planning</div></div>
-        <div class="team-card"><div class="team-av">💻</div><div class="team-role">Editor / Colorist</div><div class="team-name">Tariq Mehmood</div><div class="team-desc">Post-production · DaVinci Resolve · Motion graphics</div></div>
-        <div class="team-card"><div class="team-av">📦</div><div class="team-role">Sales Manager</div><div class="team-name">Naveed Iqbal</div><div class="team-desc">Customer relations · Product expertise · Sales strategy</div></div>
-        <div class="team-card"><div class="team-av">🔧</div><div class="team-role">Technician</div><div class="team-name">Shoaib Ullah</div><div class="team-desc">Camera repair · Sensor cleaning · Equipment maintenance</div></div>
-        <div class="team-card"><div class="team-av">📱</div><div class="team-role">Social Media Manager</div><div class="team-name">Sidra Malik</div><div class="team-desc">Content creation · Brand visibility · Community management</div></div>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- ════════════════════════════════════════════
-     CONTACT PAGE
+     CONTACT
 ════════════════════════════════════════════ -->
 <div class="page" id="page-contact">
-  <div class="cat-hero-page">
-    <div class="wrap">
-      <div class="breadcrumb"><a onclick="showPage('home')">Home</a> › <span>Contact</span></div>
-      <div class="cat-page-title">Get in Touch</div>
-      <div class="cat-page-sub">We're here to help you find the perfect gear</div>
-    </div>
-  </div>
-  <section class="sec sec-cream">
-    <div class="wrap">
-      <div class="contact-grid">
-        <div>
-          <div class="sec-hd" style="margin-bottom:36px;">
-            <div class="sec-tag">Visit Us</div>
-            <h2 class="sec-h2">Find Us in <em>Mardan</em></h2>
-            <p class="sec-p">Come visit our showroom and experience the gear in person. Our experts are ready to help.</p>
-          </div>
-          <div class="cinfo-item"><div class="cinfo-ico">📍</div><div><div class="cinfo-label">Address</div><div class="cinfo-val">Main Bazaar, Mardan, Khyber Pakhtunkhwa</div></div></div>
-          <div class="cinfo-item"><div class="cinfo-ico">📞</div><div><div class="cinfo-label">Phone</div><div class="cinfo-val">+92 937 123 4567</div></div></div>
-          <div class="cinfo-item"><div class="cinfo-ico">✉️</div><div><div class="cinfo-label">Email</div><div class="cinfo-val">info@mardancamera.pk</div></div></div>
-          <div class="cinfo-item"><div class="cinfo-ico">🕐</div><div><div class="cinfo-label">Hours</div><div class="cinfo-val">Mon–Sat: 9am–8pm · Sun: 11am–5pm</div></div></div>
-          <button class="wa-btn" style="margin-top:8px;" onclick="openWA()">💬 &nbsp; Chat with Us on WhatsApp</button>
-        </div>
-        <div class="cform">
-          <div class="cform-title">Send us a Message</div>
-          <input class="cfield" type="text" placeholder="Your Name">
-          <input class="cfield" type="tel" placeholder="Phone Number">
-          <input class="cfield" type="email" placeholder="Email Address">
-          <textarea class="cfield" placeholder="Your Message..."></textarea>
-          <button class="btn-gold" style="width:100%;justify-content:center;" onclick="toast('✓ Message sent! We\'ll contact you soon.')">Send Message →</button>
+  <div class="cat-hero"><div class="cat-hero-inner"><div class="breadcrumb"><a onclick="showPage('home')">Home</a> › <span>Contact</span></div><div class="cat-hero-title">Contact Us</div><div class="cat-hero-sub">We're here to help you find the perfect gear</div></div></div>
+  <div class="container" style="padding:48px 24px 80px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:36px;">
+        <h2 style="font-size:22px;font-weight:800;color:var(--dark);margin-bottom:6px;">Send a Message</h2>
+        <p style="font-size:13px;color:var(--gray3);margin-bottom:24px;">We reply within 24 hours.</p>
+        <div style="margin-bottom:18px;"><label style="font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Full Name</label><input style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--dark);outline:none;font-family:'Outfit',sans-serif;transition:border-color .2s;" placeholder="Your name" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='var(--border)'"></div>
+        <div style="margin-bottom:18px;"><label style="font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Phone</label><input style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--dark);outline:none;font-family:'Outfit',sans-serif;" placeholder="+92 3XX XXX XXXX"></div>
+        <div style="margin-bottom:18px;"><label style="font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">Message</label><textarea style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--dark);outline:none;font-family:'Outfit',sans-serif;min-height:120px;resize:vertical;" placeholder="What are you looking for?"></textarea></div>
+        <button class="btn-red" style="width:100%;justify-content:center;font-size:14px;padding:14px;" onclick="toast('✓ Message sent! We\'ll reply soon.')">Send Message →</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;align-items:flex-start;gap:14px;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:46px;height:46px;background:var(--gray);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📍</div><div><div style="font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;">Store Location</div><div style="font-size:13px;color:var(--gray3);">Main Bazaar, Mardan, KPK, Pakistan</div></div></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;align-items:flex-start;gap:14px;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:46px;height:46px;background:var(--gray);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📞</div><div><div style="font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;">Phone & WhatsApp</div><div style="font-size:13px;color:var(--gray3);">+92 937 123 4567<br>+92 300 123 4567</div></div></div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;align-items:flex-start;gap:14px;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><div style="width:46px;height:46px;background:var(--gray);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🕐</div><div><div style="font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;">Opening Hours</div><div style="font-size:13px;color:var(--gray3);">Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: 11:00 AM – 5:00 PM</div></div></div>
+        <div style="background:var(--red);border-radius:10px;padding:24px;cursor:pointer;" onclick="openWA()">
+          <div style="font-size:26px;margin-bottom:10px;">💬</div>
+          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:6px;">Chat on WhatsApp</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:16px;">Get instant answers about products and prices.</div>
+          <button style="background:#fff;color:var(--red);border:none;padding:10px 22px;border-radius:6px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;">Chat Now →</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>
 
 <script>
-/* ══════════════════════════════════════════
-   CUSTOM CURSOR
-══════════════════════════════════════════ */
-const cur = document.getElementById('cur');
-const curRing = document.getElementById('curRing');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top = e.clientY + 'px';
-  setTimeout(() => {
-    curRing.style.left = e.clientX + 'px';
-    curRing.style.top = e.clientY + 'px';
-  }, 60);
-});
-document.querySelectorAll('a,button,.pcard,.cat-card,.ddl,.nav-link').forEach(el => {
-  el.addEventListener('mouseenter', () => curRing.classList.add('expand'));
-  el.addEventListener('mouseleave', () => curRing.classList.remove('expand'));
-});
-
-/* ══════════════════════════════════════════
-   PRODUCT DATA
-══════════════════════════════════════════ */
+// ─── PRODUCT DATABASE ───────────────────────────────
 const DB = {
   cameras:[
-    {id:'cam1',brand:'Sony',sub:'Mirrorless',name:'Sony Alpha A7 IV Full-Frame Mirrorless',icon:'📷',price:549999,oldPrice:589999,rating:4.9,badges:['HOT'],desc:'33MP full-frame BSI CMOS sensor. 4K 60p video, real-time Eye AF, 10fps continuous shooting. The definitive hybrid camera.',specs:[{k:'Sensor',v:'33MP Full-Frame'},{k:'Video',v:'4K 60p'},{k:'ISO Range',v:'100–51200'},{k:'Autofocus',v:'Real-Time Eye AF'},{k:'Stabilization',v:'5-Axis IBIS'},{k:'Weight',v:'658g'}]},
-    {id:'cam2',brand:'Canon',sub:'Mirrorless',name:'Canon EOS R6 Mark II Mirrorless',icon:'📷',price:499999,oldPrice:549999,rating:4.8,badges:['SALE'],desc:'40MP full-frame CMOS. 6K RAW internal recording, 40fps continuous, advanced Dual Pixel CMOS AF II.',specs:[{k:'Sensor',v:'40MP Full-Frame'},{k:'Video',v:'6K RAW'},{k:'ISO Range',v:'100–102400'},{k:'Autofocus',v:'Dual Pixel CMOS AF II'},{k:'Stabilization',v:'8-Stop IBIS'},{k:'Weight',v:'670g'}]},
-    {id:'cam3',brand:'Nikon',sub:'Mirrorless',name:'Nikon Z8 Mirrorless Camera',icon:'📷',price:649999,rating:4.9,badges:['NEW'],desc:'45.7MP stacked BSI CMOS. 8K RAW internal, 120fps 4K, subject recognition AF. The powerhouse.',specs:[{k:'Sensor',v:'45.7MP Stacked BSI'},{k:'Video',v:'8K RAW'},{k:'ISO Range',v:'64–25600'},{k:'Autofocus',v:'Subject Recognition'},{k:'Stabilization',v:'6-Stop VR'},{k:'Weight',v:'820g'}]},
-    {id:'cam4',brand:'Fujifilm',sub:'Mirrorless',name:'Fujifilm X100VI Compact Camera',icon:'📷',price:279999,rating:4.8,badges:['NEW','HOT'],desc:'40.2MP X-Trans CMOS 5 HR. Film simulations, 6K video, IBIS, built-in 23mm f/2 lens.',specs:[{k:'Sensor',v:'40.2MP X-Trans 5 HR'},{k:'Video',v:'6K 30p'},{k:'Lens',v:'23mm f/2 Built-in'},{k:'Film Modes',v:'20 Film Simulations'},{k:'Stabilization',v:'7-Stop IBIS'},{k:'Weight',v:'521g'}]},
-    {id:'cam5',brand:'Sony',sub:'Cinema',name:'Sony ZV-E1 Full-Frame Vlog Camera',icon:'🎬',price:249999,oldPrice:279999,rating:4.7,badges:['SALE'],desc:'12.1MP full-frame CMOS optimised for video. Auto framing, cinematic looks, 4K 120fps slow motion.',specs:[{k:'Sensor',v:'12.1MP Full-Frame'},{k:'Video',v:'4K 120fps'},{k:'Special',v:'Auto Framing'},{k:'Stabilization',v:'Active Mode'},{k:'Weight',v:'483g'},{k:'Type',v:'Vlog Camera'}]},
+    {id:'c1',name:'Canon EOS 3000D Body',brand:'Canon',sub:'DSLR',icon:'📷',price:135000,rating:4.1,badge:'used',specs:[{k:'Sensor',v:'18MP APS-C'},{k:'Video',v:'1080p 30fps'},{k:'Burst',v:'3 fps'},{k:'ISO',v:'100–6400'},{k:'Mount',v:'EF/EF-S'},{k:'Display',v:'2.7" LCD'}],desc:'Entry-level Canon DSLR. 18MP APS-C sensor, DIGIC 4+ processor, 1080p video. Perfect first camera for beginners.'},
+    {id:'c2',name:'Canon EOS 1200D',brand:'Canon',sub:'DSLR',icon:'📷',price:67500,rating:4.0,badge:'used',specs:[{k:'Sensor',v:'18MP APS-C'},{k:'Video',v:'1080p 30fps'},{k:'Burst',v:'3 fps'},{k:'ISO',v:'100–6400'},{k:'Mount',v:'EF/EF-S'},{k:'Guide Mode',v:'Yes'}],desc:'Reliable Canon DSLR with 18MP sensor and 1080p video. Excellent starter camera with great lens ecosystem.'},
+    {id:'c3',name:'Canon EOS 90D',brand:'Canon',sub:'DSLR',icon:'📷',price:280000,oldPrice:320000,rating:4.7,badge:'sale',specs:[{k:'Sensor',v:'32.5MP APS-C'},{k:'Video',v:'4K 30fps'},{k:'Burst',v:'10 fps'},{k:'ISO',v:'100–25,600'},{k:'AF Points',v:'45 cross-type'},{k:'Display',v:'Flip touchscreen'}],desc:'Enthusiast powerhouse with 32.5MP, 10fps burst, and 4K video. Dual Pixel AF for smooth autofocus.'},
+    {id:'c4',name:'Canon EOS R6 Mark II',brand:'Canon',sub:'Mirrorless',icon:'🎥',price:479000,rating:4.9,badge:'new',specs:[{k:'Sensor',v:'40MP Full-Frame'},{k:'FPS',v:'40 fps RAW'},{k:'Video',v:'6K RAW'},{k:'IBIS',v:'8-Stop'},{k:'AF',v:'Dual Pixel II'},{k:'Mount',v:'RF'}],desc:'Canon flagship hybrid mirrorless. 40MP, 40fps RAW burst, 6K RAW video, and class-leading 8-stop IBIS.'},
+    {id:'c5',name:'Canon EOS R8',brand:'Canon',sub:'Mirrorless',icon:'🎥',price:225000,rating:4.7,badge:'new',specs:[{k:'Sensor',v:'24.2MP Full-Frame'},{k:'FPS',v:'40 fps'},{k:'Video',v:'4K 60fps'},{k:'AF',v:'Dual Pixel II'},{k:'Weight',v:'461g'},{k:'Mount',v:'RF'}],desc:'Lightweight full-frame mirrorless with incredible AF. 40fps burst and 4K 60fps video in a compact body.'},
+    {id:'s1',name:'Sony A5000',brand:'Sony',sub:'Mirrorless',icon:'📸',price:65000,rating:3.9,badge:'used',specs:[{k:'Sensor',v:'20.1MP CMOS'},{k:'Video',v:'1080p'},{k:'Burst',v:'3.5 fps'},{k:'ISO',v:'100–16000'},{k:'Mount',v:'E-Mount'},{k:'Weight',v:'269g'}],desc:'Ultra-compact Sony mirrorless. Beginner-friendly with 20MP sensor. Great travel companion.'},
+    {id:'s2',name:'Sony A6000',brand:'Sony',sub:'Mirrorless',icon:'📸',price:125000,rating:4.4,badge:'used',specs:[{k:'Sensor',v:'24.3MP CMOS'},{k:'AF Points',v:'179 Phase-Detect'},{k:'Burst',v:'11 fps'},{k:'Video',v:'1080p 60fps'},{k:'ISO',v:'100–25600'},{k:'Mount',v:'E-Mount'}],desc:'Legendary APS-C mirrorless. 11fps burst, 179-point fast AF, EVF included. Still one of the best value cameras.'},
+    {id:'s3',name:'Sony A6400',brand:'Sony',sub:'Mirrorless',icon:'📸',price:220000,rating:4.6,badge:'',specs:[{k:'Sensor',v:'24.2MP CMOS'},{k:'Burst',v:'11 fps'},{k:'Video',v:'4K 30fps'},{k:'Screen',v:'180° Flip'},{k:'ISO',v:'100–32000'},{k:'Mount',v:'E-Mount'}],desc:'Content creator king. Industry-leading AF, 180° flip screen, unlimited 4K recording. Perfect for YouTube.'},
+    {id:'s4',name:'Sony Alpha A7 IV',brand:'Sony',sub:'Mirrorless',icon:'🎥',price:549999,rating:4.9,badge:'new',specs:[{k:'Sensor',v:'33MP Full-Frame BSI'},{k:'Video',v:'4K 60fps 10-bit'},{k:'AF',v:'759-point Phase-Detect'},{k:'IBIS',v:'5-Axis'},{k:'FPS',v:'10 fps'},{k:'Mount',v:'E-Mount'}],desc:'The definitive full-frame hybrid. 33MP BSI sensor, 4K 60fps 10-bit, 759-point phase-detect AF, and powerful IBIS.'},
+    {id:'s5',name:'Sony A6600',brand:'Sony',sub:'Mirrorless',icon:'📸',price:295000,rating:4.7,badge:'',specs:[{k:'Sensor',v:'24.2MP CMOS'},{k:'IBIS',v:'5-Axis'},{k:'Burst',v:'11 fps'},{k:'Video',v:'4K 30fps'},{k:'Battery',v:'Long life NP-FZ100'},{k:'Mount',v:'E-Mount'}],desc:'Pro APS-C body with IBIS. Best battery in Sony APS-C lineup. Weather sealed.'},
+    {id:'n1',name:'Nikon D3500',brand:'Nikon',sub:'DSLR',icon:'📷',price:105000,rating:4.5,badge:'used',specs:[{k:'Sensor',v:'24.2MP CMOS'},{k:'Battery',v:'~1500 shots'},{k:'Burst',v:'5 fps'},{k:'Video',v:'1080p'},{k:'ISO',v:'100–25600'},{k:'Mount',v:'F Mount'}],desc:'Best-in-class beginner DSLR. 24.2MP, incredible 1500-shot battery life, and guide mode for learning.'},
+    {id:'n2',name:'Nikon D5600',brand:'Nikon',sub:'DSLR',icon:'📷',price:145000,rating:4.6,badge:'used',specs:[{k:'Sensor',v:'24.2MP CMOS'},{k:'Screen',v:'Flip touchscreen'},{k:'Video',v:'1080p 60fps'},{k:'Burst',v:'5 fps'},{k:'ISO',v:'100–25600'},{k:'Mount',v:'F Mount'}],desc:'Excellent mid-range DSLR with flip touchscreen. 24.2MP, no AA filter for extra sharpness.'},
+    {id:'n3',name:'Nikon D7500',brand:'Nikon',sub:'DSLR',icon:'📷',price:220000,oldPrice:255000,rating:4.7,badge:'sale',specs:[{k:'Sensor',v:'20.9MP CMOS'},{k:'ISO',v:'100–51,200'},{k:'Burst',v:'8 fps'},{k:'Video',v:'4K 30fps'},{k:'AF',v:'51-point Multi-CAM'},{k:'Mount',v:'F Mount'}],desc:'Advanced enthusiast DSLR. 4K video, 8fps burst, 51-point AF, outstanding high-ISO performance.'},
+    {id:'n4',name:'Nikon Z8',brand:'Nikon',sub:'Mirrorless',icon:'🎥',price:649000,rating:4.9,badge:'new',specs:[{k:'Sensor',v:'45.7MP Full-Frame Stacked'},{k:'Video',v:'8K 60fps RAW'},{k:'FPS',v:'20 fps'},{k:'AF',v:'Subject Detection'},{k:'Body',v:'Weather-Sealed'},{k:'Mount',v:'Z Mount'}],desc:'Pro flagship mirrorless. 45.7MP stacked BSI CMOS, 8K 60fps RAW video, 20fps continuous.'},
   ],
   lenses:[
-    {id:'len1',brand:'Sony',sub:'Prime',name:'Sony FE 50mm f/1.2 GM Prime Lens',icon:'🔭',price:289999,rating:4.9,badges:['HOT'],desc:'Ultimate portraiture prime with stunning bokeh. XD Linear Motor for smooth, near-silent AF.',specs:[{k:'Focal Length',v:'50mm'},{k:'Max Aperture',v:'f/1.2'},{k:'Mount',v:'Sony E-Mount'},{k:'Filter',v:'72mm'},{k:'Weight',v:'778g'},{k:'Stabilization',v:'No (IBIS Compatible)'}]},
-    {id:'len2',brand:'Canon',sub:'Zoom',name:'Canon RF 24-70mm f/2.8L IS USM',icon:'🔭',price:449999,rating:4.8,badges:[],desc:'The flagship standard zoom. Image Stabilization, Nano USM, weather-sealed for pros.',specs:[{k:'Focal Length',v:'24-70mm'},{k:'Max Aperture',v:'f/2.8'},{k:'Mount',v:'Canon RF'},{k:'Stabilization',v:'5-Stop IS'},{k:'Weight',v:'900g'},{k:'Weather Seal',v:'Yes'}]},
-    {id:'len3',brand:'Sigma',sub:'Prime',name:'Sigma 85mm f/1.4 DG DN Art Lens',icon:'🔭',price:149999,oldPrice:179999,rating:4.7,badges:['SALE'],desc:'Art series portrait prime. Remarkable sharpness wide open, linear AF motor, cinematic rendering.',specs:[{k:'Focal Length',v:'85mm'},{k:'Max Aperture',v:'f/1.4'},{k:'Mount',v:'Sony E / L-Mount'},{k:'Filter',v:'77mm'},{k:'Weight',v:'625g'},{k:'Series',v:'Art Line'}]},
-    {id:'len4',brand:'Nikon',sub:'Zoom',name:'Nikon NIKKOR Z 24-120mm f/4 S',icon:'🔭',price:189999,rating:4.7,badges:['NEW'],desc:'Versatile travel zoom. S-Line optical excellence, stepping motor AF, compact and sharp.',specs:[{k:'Focal Length',v:'24-120mm'},{k:'Max Aperture',v:'f/4'},{k:'Mount',v:'Nikon Z'},{k:'Filter',v:'77mm'},{k:'Weight',v:'630g'},{k:'Series',v:'S-Line'}]},
-    {id:'len5',brand:'Tamron',sub:'Zoom',name:'Tamron 17-28mm f/2.8 Di III RXD',icon:'🔭',price:79999,oldPrice:94999,rating:4.6,badges:['SALE'],desc:'Compact ultrawide zoom for Sony E-mount. f/2.8 throughout, fast RXD AF motor, 0.19m close focus.',specs:[{k:'Focal Length',v:'17-28mm'},{k:'Max Aperture',v:'f/2.8'},{k:'Mount',v:'Sony E-Mount'},{k:'Filter',v:'67mm'},{k:'Weight',v:'420g'},{k:'Close Focus',v:'0.19m'}]},
+    {id:'l1',name:'RF 24-50mm f/4.5-6.3 IS STM',brand:'Canon',sub:'Zoom',icon:'🔭',price:105000,rating:4.2,badge:'',specs:[{k:'Focal',v:'24-50mm'},{k:'Aperture',v:'f/4.5–6.3'},{k:'IS',v:'Yes'},{k:'Weight',v:'210g'},{k:'Filter',v:'58mm'},{k:'Mount',v:'RF'}],desc:'Compact entry zoom for Canon RF cameras. Light, stabilized, great for travel.'},
+    {id:'l2',name:'RF 24-105mm f/4L IS USM',brand:'Canon',sub:'Zoom',icon:'🔭',price:300000,rating:4.8,badge:'',specs:[{k:'Focal',v:'24-105mm'},{k:'Aperture',v:'f/4 constant'},{k:'IS',v:'Yes'},{k:'Weight',v:'700g'},{k:'Filter',v:'77mm'},{k:'Build',v:'L-series'}],desc:'L-series professional zoom. Outstanding sharpness, perfect for portraits, landscapes, and video.'},
+    {id:'l3',name:'RF 28-70mm f/2L USM',brand:'Canon',sub:'Zoom',icon:'🔭',price:850000,rating:4.9,badge:'',specs:[{k:'Focal',v:'28-70mm'},{k:'Aperture',v:'f/2'},{k:'Weight',v:'1430g'},{k:'Filter',v:'95mm'},{k:'Sharpness',v:'9.7/10'},{k:'Mount',v:'RF'}],desc:'Flagship zoom with extraordinary f/2 aperture. Unmatched low light performance.'},
+    {id:'l4',name:'RF 50mm f/1.2L USM',brand:'Canon',sub:'Prime',icon:'🎯',price:520000,rating:4.9,badge:'',specs:[{k:'Focal',v:'50mm'},{k:'Aperture',v:'f/1.2'},{k:'Weight',v:'950g'},{k:'Filter',v:'77mm'},{k:'AF',v:'Ring USM'},{k:'Mount',v:'RF'}],desc:'The ultimate 50mm prime. f/1.2 maximum aperture, stunning bokeh, L-series quality.'},
+    {id:'l5',name:'Sony 16-50mm f/3.5-5.6 OSS PZ',brand:'Sony',sub:'Zoom',icon:'🔭',price:35000,rating:4.0,badge:'used',specs:[{k:'Focal',v:'16-50mm'},{k:'Aperture',v:'f/3.5–5.6'},{k:'IS',v:'OSS'},{k:'Weight',v:'107g'},{k:'Power Zoom',v:'Yes'},{k:'Mount',v:'E-Mount'}],desc:'Ultra-compact Sony kit zoom. Power zoom for smooth video transitions.'},
+    {id:'l6',name:'Sony 16-70mm f/4 ZA OSS Zeiss',brand:'Sony',sub:'Zoom',icon:'🔭',price:145000,rating:4.6,badge:'',specs:[{k:'Focal',v:'16-70mm'},{k:'Aperture',v:'f/4 constant'},{k:'Coating',v:'Zeiss T*'},{k:'IS',v:'OSS'},{k:'Weight',v:'308g'},{k:'Mount',v:'E-Mount'}],desc:'Zeiss-branded premium travel zoom. Outstanding color and sharpness for APS-C Sony.'},
+    {id:'l7',name:'AF-S DX 18-55mm f/3.5-5.6G VR',brand:'Nikon',sub:'Zoom',icon:'🔭',price:18500,rating:4.0,badge:'used',specs:[{k:'Focal',v:'18-55mm'},{k:'Aperture',v:'f/3.5–5.6'},{k:'VR',v:'Yes'},{k:'Weight',v:'205g'},{k:'Filter',v:'52mm'},{k:'Mount',v:'F Mount'}],desc:'Standard Nikon kit zoom. Lightweight, stabilized, good for beginners.'},
+    {id:'l8',name:'AF-S DX 18-105mm f/3.5-5.6G VR',brand:'Nikon',sub:'Zoom',icon:'🔭',price:42000,rating:4.3,badge:'used',specs:[{k:'Focal',v:'18-105mm'},{k:'Aperture',v:'f/3.5–5.6'},{k:'VR',v:'Yes'},{k:'Range',v:'18–105mm'},{k:'Weight',v:'420g'},{k:'Mount',v:'F Mount'}],desc:'Versatile all-rounder for Nikon DX. Great range for travel, events, and everyday photography.'},
   ],
   lights:[
-    {id:'lit1',brand:'Aputure',sub:'COB',name:'Aputure Amaran 300c RGB COB Light',icon:'💡',price:89999,rating:4.8,badges:['HOT'],desc:'300W RGBWW COB studio light. Full-color control, Bowens mount, 65,000 lighting effects.',specs:[{k:'Power',v:'300W'},{k:'Type',v:'RGBWW COB'},{k:'Mount',v:'Bowens'},{k:'CCT Range',v:'2000K–10000K'},{k:'Control',v:'Sidus Link App'},{k:'Weight',v:'3.2kg'}]},
-    {id:'lit2',brand:'Godox',sub:'COB',name:'Godox SL200III Daylight LED Video Light',icon:'💡',price:49999,oldPrice:59999,rating:4.7,badges:['SALE'],desc:'200W 5600K daylight LED. Quiet fan, Bowens mount, CRI 96+, ideal for studio and field.',specs:[{k:'Power',v:'200W'},{k:'Color Temp',v:'5600K'},{k:'CRI',v:'96+'},{k:'Mount',v:'Bowens'},{k:'Control',v:'Remote / App'},{k:'Weight',v:'2.1kg'}]},
-    {id:'lit3',brand:'Aputure',sub:'RGB',name:'Aputure Amaran AL-MC Pro Pocket RGB',icon:'🌈',price:24999,rating:4.6,badges:['NEW'],desc:'Pocket-sized RGB panel with 65 HSI presets. Magnetic mount, rechargeable battery, app control.',specs:[{k:'Type',v:'RGB Panel'},{k:'Battery',v:'Built-in Rechargeable'},{k:'Presets',v:'65+ HSI Effects'},{k:'Mount',v:'Magnetic'},{k:'Control',v:'Sidus Link App'},{k:'Weight',v:'97g'}]},
-    {id:'lit4',brand:'Godox',sub:'RGB',name:'Godox TL120 RGB Tube Light (2-Pack)',icon:'🌈',price:39999,oldPrice:49999,rating:4.5,badges:['SALE'],desc:'120cm RGB tube light pair. 360° illumination, 10 scene modes, DMX compatible.',specs:[{k:'Length',v:'120cm'},{k:'Type',v:'RGB Tube'},{k:'Pack',v:'2 Lights'},{k:'Modes',v:'10 Scene Modes'},{k:'Control',v:'DMX / App'},{k:'Power',v:'36W each'}]},
-    {id:'lit5',brand:'Godox',sub:'COB',name:'Godox ML30Bi Bi-Color LED Pocket Light',icon:'💡',price:14999,rating:4.4,badges:[],desc:'Compact 30W bi-color LED with built-in battery. CRI 96+, 2800–6500K range, 5 lighting effects.',specs:[{k:'Power',v:'30W'},{k:'CCT',v:'2800K–6500K'},{k:'CRI',v:'96+'},{k:'Battery',v:'Built-in 4000mAh'},{k:'Modes',v:'5 Effects'},{k:'Weight',v:'356g'}]},
+    {id:'li1',name:'Aputure Amaran 100D',brand:'Aputure',sub:'COB',icon:'💡',price:77500,rating:4.8,badge:'',specs:[{k:'Power',v:'100W'},{k:'Color',v:'5600K Daylight'},{k:'CRI',v:'95+'},{k:'Mount',v:'Bowens'},{k:'Control',v:'App + Dial'},{k:'Weight',v:'~1.8kg'}],desc:'Entry cinema key light. Perfect for YouTube studios, interviews, and solo creator setups.'},
+    {id:'li2',name:'Aputure Amaran 200X',brand:'Aputure',sub:'COB',icon:'💡',price:112500,oldPrice:130000,rating:4.9,badge:'sale',specs:[{k:'Power',v:'200W'},{k:'Color',v:'2700–6500K'},{k:'CRI',v:'95+'},{k:'Mount',v:'Bowens'},{k:'Control',v:'App + Dial'},{k:'Weight',v:'~2.5kg'}],desc:'High-output bi-color COB. Perfect for full studio setups, indie films, and commercial shoots.'},
+    {id:'li3',name:'Aputure Amaran 300C',brand:'Aputure',sub:'RGB',icon:'🌈',price:150000,rating:4.9,badge:'',specs:[{k:'Power',v:'300W'},{k:'Color',v:'Full RGB + Bi-color'},{k:'FX Modes',v:'Lightning, Fire, Police'},{k:'CRI',v:'95+'},{k:'Mount',v:'Bowens'},{k:'Weight',v:'~3kg'}],desc:'The most powerful RGB COB light. Full color control, FX modes for creative productions.'},
+    {id:'li4',name:'Aputure Amaran 150C',brand:'Aputure',sub:'RGB',icon:'🌈',price:110000,rating:4.8,badge:'',specs:[{k:'Power',v:'150W'},{k:'Color',v:'Full RGB'},{k:'Range',v:'2700–10000K'},{k:'Control',v:'App + Dial'},{k:'Mount',v:'Bowens'},{k:'Weight',v:'~2kg'}],desc:'Mid-range RGB COB. Perfect balance of power and color control for hybrid creator studios.'},
+    {id:'li5',name:'Godox SL60IID',brand:'Godox',sub:'COB',icon:'💡',price:55000,rating:4.6,badge:'',specs:[{k:'Power',v:'60W'},{k:'Color',v:'5600K Daylight'},{k:'CRI',v:'95'},{k:'Mount',v:'Bowens'},{k:'Weight',v:'~1.4kg'},{k:'Control',v:'Remote'}],desc:'Best value entry-level COB LED. Perfect for beginner YouTube setups and small studio rigs.'},
+    {id:'li6',name:'Godox AD200 Pro Flash',brand:'Godox',sub:'Flash',icon:'⚡',price:58000,oldPrice:68000,rating:4.7,badge:'sale',specs:[{k:'Power',v:'200Ws'},{k:'HSS',v:'1/8000s'},{k:'TTL',v:'Canon/Nikon/Sony'},{k:'Flashes',v:'500 per charge'},{k:'Weight',v:'500g'},{k:'Guide No.',v:'GN52'}],desc:'200Ws portable pocket flash. TTL, HSS, 500 flashes per charge. Ultimate portable flash.'},
   ],
   gimbals:[
-    {id:'gim1',brand:'DJI',sub:'Handheld',name:'DJI RS 4 Pro 3-Axis Gimbal Stabilizer',icon:'🎬',price:149999,rating:4.9,badges:['NEW','HOT'],desc:'3-axis motorized gimbal. 4.5kg payload, OLED touchscreen, intelligent shooting modes.',specs:[{k:'Payload',v:'4.5kg'},{k:'Battery',v:'21hrs runtime'},{k:'Axes',v:'3-Axis Motorized'},{k:'Screen',v:'OLED Touch'},{k:'Modes',v:'Follow / Lock / Sport'},{k:'Weight',v:'1.5kg'}]},
-    {id:'gim2',brand:'Zhiyun',sub:'Handheld',name:'Zhiyun Crane M3 Pro 3-Axis Gimbal',icon:'🎬',price:79999,oldPrice:94999,rating:4.6,badges:['SALE'],desc:'Compact 3-axis gimbal for mirrorless. 1.5kg payload, built-in LED fill light, sling mode.',specs:[{k:'Payload',v:'1.5kg'},{k:'Battery',v:'9hrs runtime'},{k:'Axes',v:'3-Axis'},{k:'Special',v:'Built-in LED Light'},{k:'Modes',v:'Follow / Vortex / POV'},{k:'Weight',v:'915g'}]},
-    {id:'gim3',brand:'DJI',sub:'Pocket',name:'DJI Osmo Mobile 6 Smartphone Gimbal',icon:'🎬',price:29999,oldPrice:34999,rating:4.5,badges:['SALE'],desc:'3-axis smartphone stabilizer. ShotGuides, magnetic phone clamp, extendable handle.',specs:[{k:'Payload',v:'300g (Smartphones)'},{k:'Battery',v:'6.4hrs'},{k:'Axes',v:'3-Axis'},{k:'Special',v:'ShotGuides AI'},{k:'Extension',v:'215mm'},{k:'Weight',v:'390g'}]},
+    {id:'g1',name:'DJI RS 4 Pro',brand:'DJI',sub:'Professional',icon:'🎬',price:307500,rating:4.9,badge:'new',specs:[{k:'Payload',v:'4.5 kg'},{k:'Battery',v:'13–29 hours'},{k:'Screen',v:'OLED Touchscreen'},{k:'Build',v:'Carbon Fiber'},{k:'Feature',v:'ActiveTrack Pro'},{k:'Weight',v:'~1.3kg'}],desc:'Cinema-grade 3-axis gimbal. 4.5kg payload, OLED touchscreen, ActiveTrack Pro with LiDAR.'},
+    {id:'g2',name:'DJI RS 4',brand:'DJI',sub:'Professional',icon:'🎬',price:185000,rating:4.8,badge:'new',specs:[{k:'Payload',v:'3.0 kg'},{k:'Battery',v:'12–24 hours'},{k:'Screen',v:'OLED'},{k:'Auto-Lock',v:'Yes'},{k:'Weight',v:'~1.2kg'},{k:'App',v:'DJI Ronin'}],desc:'Professional hybrid gimbal. 3kg payload, OLED display, automated axis locks.'},
+    {id:'g3',name:'DJI RS 3 Mini',brand:'DJI',sub:'Compact',icon:'🎬',price:95000,rating:4.6,badge:'',specs:[{k:'Payload',v:'2.0 kg'},{k:'Battery',v:'10 hours'},{k:'Weight',v:'795g'},{k:'Folded',v:'Ultra-compact'},{k:'Control',v:'Bluetooth'},{k:'App',v:'DJI Ronin'}],desc:'Compact and lightweight gimbal. 2kg payload, 10-hour battery, ultra-compact when folded.'},
+    {id:'g4',name:'Zhiyun Crane M3',brand:'Zhiyun',sub:'Compact',icon:'🎥',price:68000,rating:4.5,badge:'',specs:[{k:'Payload',v:'800g'},{k:'Battery',v:'8 hours'},{k:'Fill Light',v:'Built-in'},{k:'Charge',v:'USB-C'},{k:'Weight',v:'598g'},{k:'App',v:'TransMount'}],desc:'Compact gimbal with built-in fill light. Supports mirrorless and smartphones.'},
   ],
   tripods:[
-    {id:'tri1',brand:'Manfrotto',sub:'Carbon',name:'Manfrotto BeFree Carbon Travel Tripod',icon:'🦯',price:69999,rating:4.8,badges:['HOT'],desc:'Ultra-lightweight carbon fiber travel tripod. 4-section legs, twist locks, ball head included.',specs:[{k:'Material',v:'Carbon Fiber'},{k:'Max Height',v:'144cm'},{k:'Min Height',v:'33cm'},{k:'Max Load',v:'8kg'},{k:'Folded',v:'40cm'},{k:'Weight',v:'1.19kg'}]},
-    {id:'tri2',brand:'Joby',sub:'Flexible',name:'Joby GorillaPod 5K Flexible Tripod',icon:'🐙',price:29999,oldPrice:35999,rating:4.6,badges:['SALE'],desc:'5kg capacity flexible tripod. 360° ball head, wraps around poles and branches.',specs:[{k:'Max Load',v:'5kg'},{k:'Head',v:'360° Ball Head'},{k:'Type',v:'Flexible'},{k:'Material',v:'ABS Plastic'},{k:'Height',v:'39.5cm'},{k:'Weight',v:'499g'}]},
-    {id:'tri3',brand:'Manfrotto',sub:'Video',name:'Manfrotto MVH500AH Fluid Video Head + 755CX3',icon:'🦯',price:149999,rating:4.7,badges:[],desc:'Professional fluid video head on carbon fiber 3-section legs. 75mm ball, 8kg payload.',specs:[{k:'Head Type',v:'Fluid Video'},{k:'Payload',v:'8kg'},{k:'Legs',v:'Carbon Fiber 3-Section'},{k:'Height',v:'152cm'},{k:'Drag',v:'2-Way Drag System'},{k:'Weight',v:'2.8kg'}]},
+    {id:'t1',name:'Manfrotto BeFree Advanced',brand:'Manfrotto',sub:'Travel',icon:'🦯',price:60000,rating:4.7,badge:'',specs:[{k:'Payload',v:'~4–5 kg'},{k:'Weight',v:'~1.4 kg'},{k:'Folded',v:'~40 cm'},{k:'Legs',v:'Twist-lock'},{k:'Head',v:'Arca-Swiss'},{k:'Build',v:'Aluminum'}],desc:'Travel king. Perfect for mirrorless systems on the go. Quick deployment, Arca-Swiss compatible.'},
+    {id:'t2',name:'Manfrotto BeFree GT XPRO',brand:'Manfrotto',sub:'Hybrid',icon:'🦯',price:80000,oldPrice:100000,rating:4.8,badge:'sale',specs:[{k:'Payload',v:'~6 kg'},{k:'Weight',v:'~1.7 kg'},{k:'Column',v:'90° rotation'},{k:'Low Angle',v:'Ground level'},{k:'Legs',v:'Twist-lock'},{k:'Build',v:'Aluminum'}],desc:'Hybrid travel + professional tripod. 90° center column for macro/ground shooting.'},
+    {id:'t3',name:'Manfrotto BeFree Live',brand:'Manfrotto',sub:'Video',icon:'🎬',price:75000,rating:4.6,badge:'',specs:[{k:'Payload',v:'~4 kg'},{k:'Head',v:'Fluid video head'},{k:'Pan/Tilt',v:'Smooth cinematic'},{k:'Build',v:'Aluminum'},{k:'Leveling',v:'Quick'},{k:'Usage',v:'Video specialist'}],desc:'Video-optimized travel tripod with fluid head. Smooth pan/tilt for cinematic shots.'},
+    {id:'t4',name:'Joby GorillaPod 5K',brand:'Joby',sub:'Flexible',icon:'🐙',price:28000,rating:4.5,badge:'',specs:[{k:'Payload',v:'2.26 kg'},{k:'Style',v:'Flexible legs'},{k:'Material',v:'ABS + Rubber'},{k:'Head',v:'Ball head'},{k:'Usage',v:'Any surface'},{k:'Travel',v:'Ultra-compact'}],desc:'Iconic flexible tripod. Wrap around any surface. Perfect for vloggers and travel creators.'},
   ],
   microphones:[
-    {id:'mic1',brand:'Rode',sub:'Shotgun',name:'Rode VideoMic Pro+ Shotgun Mic',icon:'🎙️',price:34999,rating:4.8,badges:['HOT'],desc:'Professional on-camera shotgun mic. High-pass filter, 3-stage gain, USB charging.',specs:[{k:'Type',v:'Shotgun Condenser'},{k:'Polar Pattern',v:'Supercardioid'},{k:'Frequency',v:'20Hz–20kHz'},{k:'Battery',v:'USB-C Rechargeable'},{k:'Output',v:'3.5mm TRS'},{k:'Weight',v:'122g'}]},
-    {id:'mic2',brand:'Rode',sub:'Wireless',name:'Rode Wireless PRO Dual Channel',icon:'📡',price:89999,rating:4.9,badges:['NEW'],desc:'Dual-channel wireless system. 32-bit float internal recording, 260m range, GainAssist AI.',specs:[{k:'Type',v:'2.4GHz Wireless'},{k:'Range',v:'260m'},{k:'Recording',v:'32-Bit Float Internal'},{k:'Battery',v:'7hrs'},{k:'Channels',v:'Dual'},{k:'Weight',v:'58g each'}]},
-    {id:'mic3',brand:'Fifine',sub:'USB',name:'Fifine K678 USB Cardioid Condenser Mic',icon:'🎤',price:8999,oldPrice:11999,rating:4.4,badges:['SALE'],desc:'Budget USB condenser for streaming and podcasting. Cardioid pattern, 192kHz/24-bit.',specs:[{k:'Type',v:'USB Condenser'},{k:'Polar Pattern',v:'Cardioid'},{k:'Sample Rate',v:'192kHz/24-bit'},{k:'Connection',v:'USB-A'},{k:'Stand',v:'Desk Stand Included'},{k:'Weight',v:'326g'}]},
-    {id:'mic4',brand:'Boya',sub:'Wireless',name:'Boya BY-WM4 Pro-K4 Wireless Lavalier',icon:'📻',price:14999,oldPrice:18999,rating:4.3,badges:['SALE'],desc:'Dual-channel 2.4GHz wireless lavalier system. 100m range, 3.5mm & Lightning & USB-C adapters.',specs:[{k:'Type',v:'Lavalier Wireless'},{k:'Range',v:'100m'},{k:'Frequency',v:'2.4GHz'},{k:'Battery',v:'5hrs per unit'},{k:'Adapters',v:'3.5mm / Lightning / Type-C'},{k:'Weight',v:'24g each'}]},
+    {id:'m1',name:'Fifine K669B USB Mic',brand:'Fifine',sub:'USB',icon:'🎤',price:7250,rating:4.2,badge:'',specs:[{k:'Type',v:'USB Condenser'},{k:'Pattern',v:'Cardioid'},{k:'Plug & Play',v:'Yes'},{k:'Clarity',v:'8.2/10'},{k:'Weight',v:'~400g'},{k:'Best For',v:'Streaming'}],desc:'Best budget USB mic. Plug and play, no interface needed. Perfect for streaming and YouTube.'},
+    {id:'m2',name:'Fifine K690 Multi-Pattern',brand:'Fifine',sub:'USB',icon:'🎤',price:13000,rating:4.5,badge:'',specs:[{k:'Type',v:'USB Condenser'},{k:'Patterns',v:'Cardioid/Omni/Bi/Stereo'},{k:'Controls',v:'Gain + Mute'},{k:'Clarity',v:'8.7/10'},{k:'Weight',v:'~600g'},{k:'Best For',v:'Podcast'}],desc:'Multi-pattern USB condenser. 4 pickup patterns, gain control, headphone monitoring.'},
+    {id:'m3',name:'Boya BY-M1 Lavalier',brand:'Boya',sub:'Lavalier',icon:'📻',price:5000,rating:4.0,badge:'',specs:[{k:'Type',v:'Lavalier Clip-on'},{k:'Pattern',v:'Omnidirectional'},{k:'Connection',v:'3.5mm'},{k:'Cable',v:'6m long'},{k:'Power',v:'Battery LR44'},{k:'Weight',v:'~20g'}],desc:'Most popular lavalier mic in Pakistan. Works with DSLRs, smartphones, and cameras.'},
+    {id:'m4',name:'Boya BY-PM700',brand:'Boya',sub:'USB',icon:'🎙️',price:10000,rating:4.3,badge:'',specs:[{k:'Type',v:'USB Condenser'},{k:'Patterns',v:'4 polar patterns'},{k:'Power',v:'USB'},{k:'Controls',v:'Gain + pattern switch'},{k:'Clarity',v:'8.3/10'},{k:'Weight',v:'~500g'}],desc:'Versatile multi-pattern USB mic from Boya. Perfect for meetings and podcasts.'},
+    {id:'m5',name:'Rode VideoMic Pro+',brand:'Rode',sub:'Camera Mic',icon:'🎙️',price:41000,oldPrice:48000,rating:4.7,badge:'sale',specs:[{k:'Type',v:'Shotgun Camera Mic'},{k:'Pattern',v:'Supercardioid'},{k:'Battery',v:'Built-in rechargeable'},{k:'Output',v:'3.5mm TRS'},{k:'Weight',v:'122g'},{k:'Mount',v:'Camera hotshoe'}],desc:'Professional on-camera shotgun. Built-in rechargeable battery, auto power sense.'},
+    {id:'m6',name:'Rode Wireless GO II',brand:'Rode',sub:'Wireless',icon:'📡',price:95000,rating:4.8,badge:'',specs:[{k:'Type',v:'Dual wireless system'},{k:'Range',v:'200m'},{k:'Battery',v:'7 hours'},{k:'Recording',v:'Internal backup'},{k:'Output',v:'3.5mm + USB-C'},{k:'Weight',v:'31g each'}],desc:'Professional dual wireless system. 200m range, 7-hour battery, internal recording backup.'},
   ],
   sdcards:[
-    {id:'sd1',brand:'SanDisk',sub:'UHS-II',name:'SanDisk Extreme PRO SDXC 256GB V90',icon:'💾',price:18999,rating:4.9,badges:['HOT'],desc:'300MB/s read, 260MB/s write. V90 Video Speed Class for 8K and 4K RAW recording.',specs:[{k:'Capacity',v:'256GB'},{k:'Read Speed',v:'300MB/s'},{k:'Write Speed',v:'260MB/s'},{k:'Class',v:'V90 / U3'},{k:'Interface',v:'UHS-II'},{k:'Type',v:'SDXC'}]},
-    {id:'sd2',brand:'Sony',sub:'UHS-II',name:'Sony TOUGH M Series 128GB SF-M128T',icon:'💾',price:12999,oldPrice:15999,rating:4.8,badges:['SALE'],desc:'Ribless single-piece construction. 277MB/s read, IP57, ultra-tough design for field use.',specs:[{k:'Capacity',v:'128GB'},{k:'Read Speed',v:'277MB/s'},{k:'Write Speed',v:'150MB/s'},{k:'Class',v:'V60 / U3'},{k:'Durability',v:'IP57 / Dustproof'},{k:'Interface',v:'UHS-II'}]},
-    {id:'sd3',brand:'SanDisk',sub:'UHS-I',name:'SanDisk Extreme 128GB A2 V30',icon:'💾',price:4999,oldPrice:6499,rating:4.5,badges:['SALE'],desc:'190MB/s read speed, A2 rated for smooth app performance and fast photo capture.',specs:[{k:'Capacity',v:'128GB'},{k:'Read Speed',v:'190MB/s'},{k:'Write Speed',v:'90MB/s'},{k:'Class',v:'V30 / U3 / A2'},{k:'Interface',v:'UHS-I'},{k:'Type',v:'SDXC'}]},
+    {id:'sd1',name:'SanDisk Extreme 64GB',brand:'SanDisk',sub:'UHS-I',icon:'💾',price:5500,rating:4.0,badge:'',specs:[{k:'Capacity',v:'64GB'},{k:'Read',v:'150 MB/s'},{k:'Write',v:'60 MB/s'},{k:'Class',v:'V30, UHS-I'},{k:'Best For',v:'1080p DSLR'},{k:'Proof',v:'Waterproof'}],desc:'Entry-level starter SD card. Reliable for DSLR photography and 1080p video.'},
+    {id:'sd2',name:'SanDisk Extreme 128GB',brand:'SanDisk',sub:'UHS-I',icon:'💾',price:9000,rating:4.1,badge:'',specs:[{k:'Capacity',v:'128GB'},{k:'Read',v:'150 MB/s'},{k:'Write',v:'60 MB/s'},{k:'Class',v:'V30, UHS-I'},{k:'Best For',v:'1080p–4K'},{k:'Proof',v:'Waterproof'}],desc:'128GB entry-level card. Great storage for DSLRs and entry mirrorless cameras.'},
+    {id:'sd3',name:'SanDisk Extreme Pro 256GB',brand:'SanDisk',sub:'UHS-I',icon:'💾',price:16000,oldPrice:19000,rating:4.6,badge:'sale',specs:[{k:'Capacity',v:'256GB'},{k:'Read',v:'200 MB/s'},{k:'Write',v:'140 MB/s'},{k:'Class',v:'V30, UHS-I'},{k:'Best For',v:'4K/Wedding'},{k:'Proof',v:'Waterproof'}],desc:'256GB prosumer card. Perfect for wedding videographers and 4K 60fps recording.'},
+    {id:'sd4',name:'Sony SF-G Tough 128GB',brand:'Sony',sub:'UHS-II',icon:'💾',price:32000,rating:4.8,badge:'',specs:[{k:'Capacity',v:'128GB'},{k:'Read',v:'300 MB/s'},{k:'Write',v:'299 MB/s'},{k:'Class',v:'V90, UHS-II'},{k:'Build',v:'Single-piece'},{k:'Proof',v:'Waterproof/Dustproof'}],desc:'Cinema-grade UHS-II card. 300MB/s read/write, V90 rated. For pro cinema cameras.'},
   ],
   drones:[
-    {id:'drn1',brand:'DJI',sub:'Pro',name:'DJI Mavic 3 Classic (DJI RC)',icon:'🚁',price:249999,rating:4.9,badges:['HOT'],desc:'Hasselblad L-Format color, 5.1K/50fps, 46 min flight time, 15km transmission. The drone for pros.',specs:[{k:'Camera',v:'Hasselblad 20MP 4/3"'},{k:'Video',v:'5.1K 50fps'},{k:'Flight Time',v:'46 minutes'},{k:'Range',v:'15km OcuSync 3'},{k:'Obstacle',v:'Omnidirectional'},{k:'Weight',v:'895g'}]},
-    {id:'drn2',brand:'DJI',sub:'Beginner',name:'DJI Mini 4 Pro (DJI RC 2)',icon:'🚁',price:149999,oldPrice:169999,rating:4.8,badges:['NEW','SALE'],desc:'Under 249g. 4K/60fps, omnidirectional obstacle sensing, 34 min flight time. No license needed.',specs:[{k:'Camera',v:'1/1.3" CMOS 48MP'},{k:'Video',v:'4K 60fps / 4K HDR'},{k:'Flight Time',v:'34 minutes'},{k:'Range',v:'20km'},{k:'Obstacle',v:'Omnidirectional'},{k:'Weight',v:'249g'}]},
-    {id:'drn3',brand:'DJI',sub:'Beginner',name:'DJI Mini 3 (DJI RC-N1)',icon:'🚁',price:89999,oldPrice:104999,rating:4.6,badges:['SALE'],desc:'Lightweight 249g drone. 4K/30fps, 38 min flight time, True Vertical Shooting for social media.',specs:[{k:'Camera',v:'1/1.3" CMOS 12MP'},{k:'Video',v:'4K 30fps'},{k:'Flight Time',v:'38 minutes'},{k:'Range',v:'10km'},{k:'Obstacle',v:'Downward / Rear'},{k:'Weight',v:'249g'}]},
+    {id:'d1',name:'DJI Mini 2',brand:'DJI',sub:'Beginner',icon:'🚁',price:125000,rating:4.0,badge:'',specs:[{k:'Weight',v:'249g'},{k:'Camera',v:'12MP / 4K 30fps'},{k:'Sensor',v:'1/2.3" CMOS'},{k:'Flight Time',v:'~31 min'},{k:'Range',v:'~10 km'},{k:'Avoidance',v:'None'}],desc:'Ultra-light beginner drone. Sub-250g so no registration needed. 4K video, 10km range.'},
+    {id:'d2',name:'DJI Mini 3',brand:'DJI',sub:'Beginner',icon:'🚁',price:185000,rating:4.4,badge:'',specs:[{k:'Weight',v:'248g'},{k:'Camera',v:'48MP / 4K HDR'},{k:'Sensor',v:'1/1.3" CMOS'},{k:'Aperture',v:'f/1.7'},{k:'Flight Time',v:'~38 min'},{k:'Vertical',v:'Native vertical'}],desc:'Step-up creator drone. Better 1/1.3" sensor, 4K HDR, f/1.7 aperture. Social media king.'},
+    {id:'d3',name:'DJI Mini 3 Pro',brand:'DJI',sub:'Pro',icon:'🚁',price:250000,rating:4.8,badge:'new',specs:[{k:'Weight',v:'<249g'},{k:'Camera',v:'48MP / 4K 60fps / 10-bit'},{k:'Avoidance',v:'Tri-directional'},{k:'Tracking',v:'ActiveTrack 4.0'},{k:'Battery',v:'~34–47 min'},{k:'Color',v:'D-Cinelike'}],desc:'First serious Mini. 4K 60fps, 10-bit D-Cinelike, ActiveTrack 4.0, tri-directional avoidance.'},
+    {id:'d4',name:'DJI Air 3',brand:'DJI',sub:'Pro',icon:'🚁',price:320000,oldPrice:365000,rating:4.8,badge:'sale',specs:[{k:'Camera',v:'Dual cameras'},{k:'Video',v:'4K 60fps HDR'},{k:'Avoidance',v:'Omnidirectional'},{k:'Flight Time',v:'~46 min'},{k:'Range',v:'~20 km O3+'},{k:'Tracking',v:'AI tracking'}],desc:'Dual-camera drone with 46-min flight time. Wide + tele lens, omnidirectional avoidance.'},
+    {id:'d5',name:'DJI Mavic 3 Pro',brand:'DJI',sub:'Pro',icon:'🚁',price:540000,rating:4.9,badge:'',specs:[{k:'Cameras',v:'Triple camera'},{k:'Sensor',v:'4/3" Hasselblad'},{k:'Video',v:'5.1K / 4K 120fps'},{k:'Flight Time',v:'~43 min'},{k:'Color',v:'10-bit D-Log M'},{k:'Avoidance',v:'Omnidirectional'}],desc:'Triple camera professional drone. Hasselblad 4/3" sensor, 5.1K video, 4K 120fps slow motion.'},
   ],
 };
 
 const ALL = Object.values(DB).flat();
-let cart = [];
-let curCat='cameras', curBrand='All', curSub='All';
-let detailQty = 1;
 
-/* ══════════════════════════════════════════
-   HELPERS
-══════════════════════════════════════════ */
-const fmt = n => 'PKR ' + n.toLocaleString();
+// ─── STATE ─────────────────────────────────────────
+let cart=[], curCat='cameras', curBrand='All', curSub='All', curGrid='g4', curSort='featured';
 
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  window.scrollTo(0,0);
-  if(id==='home') renderHomeGrid('cameras');
+// ─── RANDOM HERO ───────────────────────────────────
+(()=>{
+  const p=ALL[Math.floor(Math.random()*ALL.length)];
+  document.getElementById('heroEmoji').textContent=p.icon;
+  document.getElementById('heroStatVal').textContent='PKR '+p.price.toLocaleString();
+  document.getElementById('heroStatKey').textContent=p.name+' · In Stock';
+})();
+
+// ─── PAGES ─────────────────────────────────────────
+function showPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ══════════════════════════════════════════
-   PRODUCT CARD
-══════════════════════════════════════════ */
-function card(p) {
-  const disc = p.oldPrice ? Math.round((1-p.price/p.oldPrice)*100) : 0;
-  const badgeHTML = (p.badges||[]).map(b=>`<span class="badge badge-${b.toLowerCase()}">${b}</span>`).join('');
-  return `<div class="pcard" onclick="openProduct('${p.id}')">
-    <div class="pcard-img">
-      <span class="pcard-emoji">${p.icon}</span>
-      <div class="pcard-badges">${badgeHTML}${disc?`<span class="badge badge-sale">-${disc}%</span>`:''}</div>
-      <div class="pcard-acts">
-        <div class="pact" onclick="event.stopPropagation();addCart('${p.id}')">🛒</div>
-        <div class="pact" onclick="event.stopPropagation();openWA()">💬</div>
+// ─── HOME TAB ──────────────────────────────────────
+homeTab('cameras',document.querySelector('.cat-tab'));
+function homeTab(cat,el){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const prods=(DB[cat]||[]).slice(0,5);
+  document.getElementById('homeProdGrid').innerHTML=prods.map(p=>card(p)).join('');
+}
+
+// ─── CATEGORY PAGE ─────────────────────────────────
+const catMeta={
+  cameras:{title:'All Cameras',sub:'Professional cameras from Canon, Sony, and Nikon',brands:['Canon','Sony','Nikon'],subs:['DSLR','Mirrorless']},
+  lenses:{title:'Camera Lenses',sub:'RF, E-Mount, and F-Mount lenses for every style',brands:['Canon','Sony','Nikon'],subs:['Zoom','Prime']},
+  lights:{title:'Lighting Equipment',sub:'Professional LED lights and flash systems',brands:['Aputure','Godox'],subs:['COB','RGB','Flash']},
+  gimbals:{title:'Camera Gimbals',sub:'3-axis gimbals for smooth cinematic footage',brands:['DJI','Zhiyun'],subs:['Professional','Compact']},
+  tripods:{title:'Tripods & Stands',sub:'Professional tripod systems',brands:['Manfrotto','Joby'],subs:['Travel','Hybrid','Video','Flexible']},
+  microphones:{title:'Microphones',sub:'USB, lavalier, wireless, and camera mics',brands:['Rode','Fifine','Boya'],subs:['USB','Lavalier','Camera Mic','Wireless']},
+  sdcards:{title:'SD Cards & Storage',sub:'High-speed memory cards for photo and video',brands:['SanDisk','Sony'],subs:['UHS-I','UHS-II']},
+  drones:{title:'Drones',sub:'DJI drones for aerial photography',brands:['DJI'],subs:['Beginner','Pro']},
+};
+
+function showCat(cat,brand,sub){
+  curCat=cat; curBrand=brand; curSub=sub;
+  const m=catMeta[cat]||{title:cat,sub:'',brands:[],subs:[]};
+  document.getElementById('catBreadcrumb').textContent=m.title;
+  document.getElementById('catPageTitle').textContent=(brand!=='All'?brand+' ':'')+m.title;
+  document.getElementById('catPageSub').textContent=m.sub;
+
+  // Brand buttons
+  document.getElementById('brandBtns').innerHTML=
+    ['All',...m.brands].map(b=>`<button class="brand-btn ${b===brand?'on':''}" onclick="setBrand('${b}')">${b}</button>`).join('');
+
+  // Sub buttons
+  document.getElementById('subBtns').innerHTML=
+    ['All',...m.subs].map(s=>`<button class="sub-btn ${s===sub?'on':''}" onclick="setSub('${s}')">${s}</button>`).join('');
+
+  renderCat();
+  showPage('category');
+}
+
+function setBrand(b){
+  curBrand=b;
+  document.querySelectorAll('.brand-btn').forEach(x=>x.classList.toggle('on',x.textContent===b));
+  renderCat();
+}
+function setSub(s){
+  curSub=s;
+  document.querySelectorAll('.sub-btn').forEach(x=>x.classList.toggle('on',x.textContent===s));
+  renderCat();
+}
+function applySort(){curSort=document.getElementById('sortSel').value;renderCat();}
+function setGrid(g){
+  curGrid=g;
+  document.querySelectorAll('.size-btn').forEach((b,i)=>b.classList.toggle('on',['g3','g4','g5'][i]===g));
+  document.getElementById('catGrid').className='prod-grid '+g;
+}
+
+function renderCat(){
+  let prods=DB[curCat]||[];
+  if(curBrand!=='All')prods=prods.filter(p=>p.brand===curBrand);
+  if(curSub!=='All')prods=prods.filter(p=>p.sub===curSub);
+  if(curSort==='price-asc')prods=[...prods].sort((a,b)=>a.price-b.price);
+  else if(curSort==='price-desc')prods=[...prods].sort((a,b)=>b.price-a.price);
+  else if(curSort==='name')prods=[...prods].sort((a,b)=>a.name.localeCompare(b.name));
+  else if(curSort==='rating')prods=[...prods].sort((a,b)=>b.rating-a.rating);
+  document.getElementById('resultsLabel').textContent=`Showing ${prods.length} product${prods.length!==1?'s':''}`;
+  const g=document.getElementById('catGrid');
+  g.className='prod-grid '+curGrid;
+  g.innerHTML=prods.length?prods.map(p=>card(p)).join(''):`<div style="grid-column:1/-1;text-align:center;padding:80px;color:#999;"><div style="font-size:48px;margin-bottom:14px;">🔍</div><p style="font-size:17px;font-weight:700;">No products found</p><p style="font-size:13px;margin-top:6px;">Try a different filter</p></div>`;
+}
+
+// ─── PRODUCT CARD ───────────────────────────────────
+function fmt(n){return'PKR '+n.toLocaleString();}
+function card(p){
+  const disc=p.oldPrice?Math.round((p.oldPrice-p.price)/p.oldPrice*100):0;
+  return`<div class="prod-card" onclick="showProd('${p.id}')">
+    <div class="prod-img-wrap">
+      <span class="prod-emoji">${p.icon}</span>
+      <div class="prod-badges">
+        ${p.badge==='sale'?`<span class="badge-sale">-${disc}%</span>`:''}
+        ${p.badge==='new'?`<span class="badge-new">NEW</span>`:''}
+        ${p.badge==='hot'?`<span class="badge-hot">HOT</span>`:''}
+        ${p.badge==='used'?`<span class="badge-sale">USED</span>`:''}
       </div>
-      <button class="pcard-qv" onclick="event.stopPropagation();openProduct('${p.id}')">Quick View</button>
+      <div class="prod-actions">
+        <div class="prod-action-btn" onclick="event.stopPropagation();addCart('${p.id}')" title="Add to cart">🛒</div>
+        <div class="prod-action-btn" onclick="event.stopPropagation();openWA()" title="WhatsApp">💬</div>
+      </div>
+      <button class="quick-view-btn" onclick="event.stopPropagation();showProd('${p.id}')">Quick View</button>
     </div>
-    <div class="pcard-info">
-      <div class="pcard-brand">${p.brand} · ${p.sub}</div>
-      <div class="pcard-name">${p.name}</div>
-      <div class="pcard-stars">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</div>
-      <div class="pcard-price-row">
-        <div>
-          <div class="pcard-price">${fmt(p.price)}</div>
-          ${p.oldPrice?`<span class="pcard-old">${fmt(p.oldPrice)}</span>`:''}
+    <div class="prod-info">
+      <div class="prod-cat">${p.brand} · ${p.sub}</div>
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-rating"><span class="stars">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</span><span class="rating-num">(${p.rating})</span></div>
+      <div class="prod-price-row">
+        <div class="price-wrap">
+          <span class="price-current">${fmt(p.price)}</span>
+          ${p.oldPrice?`<span class="price-old">${fmt(p.oldPrice)}</span>`:''}
         </div>
-        <button class="pcard-add" onclick="event.stopPropagation();addCart('${p.id}')">Add +</button>
+        <button class="cart-add-btn" onclick="event.stopPropagation();addCart('${p.id}')">Add to Cart</button>
       </div>
     </div>
   </div>`;
 }
 
-/* ══════════════════════════════════════════
-   HOME TABS
-══════════════════════════════════════════ */
-function renderHomeGrid(catKey) {
-  const g = document.getElementById('homeGrid');
-  if(g) g.innerHTML = (DB[catKey]||[]).slice(0,5).map(p=>card(p)).join('');
-}
-function homeTab(el,catKey) {
-  document.querySelectorAll('#homeTabs .tab').forEach(t=>t.classList.remove('on'));
-  el.classList.add('on');
-  renderHomeGrid(catKey);
-}
-
-/* ══════════════════════════════════════════
-   CATEGORY PAGE
-══════════════════════════════════════════ */
-const CAT_LABELS={cameras:'Cameras',lenses:'Lenses',lights:'Lighting',gimbals:'Gimbals',tripods:'Tripods',microphones:'Microphones',sdcards:'SD Cards',drones:'Drones'};
-
-function showCat(catKey, brand='All', sub='All') {
-  curCat=catKey; curBrand=brand; curSub=sub;
-  const products = DB[catKey]||[];
-  const brands=['All',...new Set(products.map(p=>p.brand))];
-  const subs=['All',...new Set(products.map(p=>p.sub))];
-
-  document.getElementById('catBreadcrumb').textContent = CAT_LABELS[catKey]||catKey;
-  document.getElementById('catPageTitle').textContent = (brand!=='All'?brand+' ':'') + (CAT_LABELS[catKey]||catKey);
-  document.getElementById('catPageSub').textContent = `Professional ${CAT_LABELS[catKey]||catKey} — genuine products with warranty`;
-
-  const bDiv=document.getElementById('brandBtns');
-  bDiv.innerHTML=brands.map(b=>`<button class="filter-btn${b===curBrand?' on':''}" onclick="filterCat('${catKey}','${b}','${curSub}')">${b}</button>`).join('');
-  const sDiv=document.getElementById('subBtns');
-  sDiv.innerHTML=subs.map(s=>`<button class="filter-btn${s===curSub?' on':''}" onclick="filterCat('${catKey}','${curBrand}','${s}')">${s}</button>`).join('');
-  renderCatGrid();
-  showPage('category');
-}
-
-function filterCat(catKey, brand, sub) {
-  curCat=catKey; curBrand=brand; curSub=sub;
-  const products = DB[catKey]||[];
-  const brands=['All',...new Set(products.map(p=>p.brand))];
-  const subs=['All',...new Set(products.map(p=>p.sub))];
-  document.getElementById('brandBtns').innerHTML=brands.map(b=>`<button class="filter-btn${b===curBrand?' on':''}" onclick="filterCat('${catKey}','${b}','${curSub}')">${b}</button>`).join('');
-  document.getElementById('subBtns').innerHTML=subs.map(s=>`<button class="filter-btn${s===curSub?' on':''}" onclick="filterCat('${catKey}','${curBrand}','${s}')">${s}</button>`).join('');
-  renderCatGrid();
-}
-
-function renderCatGrid() {
-  let products = DB[curCat]||[];
-  if(curBrand!=='All') products=products.filter(p=>p.brand===curBrand);
-  if(curSub!=='All') products=products.filter(p=>p.sub===curSub);
-  const sel=document.getElementById('sortSel');
-  if(sel) {
-    switch(sel.value){
-      case 'price-asc': products=[...products].sort((a,b)=>a.price-b.price); break;
-      case 'price-desc': products=[...products].sort((a,b)=>b.price-a.price); break;
-      case 'name': products=[...products].sort((a,b)=>a.name.localeCompare(b.name)); break;
-      case 'rating': products=[...products].sort((a,b)=>b.rating-a.rating); break;
-    }
-  }
-  document.getElementById('resultsLabel').textContent = `Showing ${products.length} product${products.length!==1?'s':''}`;
-  document.getElementById('catGrid').innerHTML = products.length
-    ? products.map(p=>card(p)).join('')
-    : `<div style="grid-column:1/-1;text-align:center;padding:80px;color:var(--muted)"><div style="font-size:48px;margin-bottom:14px">🔍</div><p style="font-size:17px;font-weight:700">No products found</p></div>`;
-}
-
-function applySort() { renderCatGrid(); }
-
-function setGrid(cls) {
-  const g=document.getElementById('catGrid');
-  g.className='pgrid '+cls;
-  document.querySelectorAll('.gbtn').forEach(b=>b.classList.remove('on'));
-  event.target.classList.add('on');
-}
-
-/* ══════════════════════════════════════════
-   PRODUCT DETAIL
-══════════════════════════════════════════ */
-function openProduct(id) {
-  const p = ALL.find(x=>x.id===id);
-  if(!p) return;
+// ─── PRODUCT DETAIL ─────────────────────────────────
+let detailQty=1;
+function showProd(id){
+  const p=ALL.find(x=>x.id===id);
+  if(!p)return;
   detailQty=1;
-  const catKey = Object.keys(DB).find(k=>DB[k].find(x=>x.id===id))||'cameras';
-  const disc = p.oldPrice ? Math.round((1-p.price/p.oldPrice)*100) : 0;
-
-  document.getElementById('detailCatLink').textContent = CAT_LABELS[catKey];
-  document.getElementById('detailCatLink').onclick = ()=>showCat(catKey,'All','All');
-  document.getElementById('detailBreadTitle').textContent = p.name.split(' ').slice(0,4).join(' ')+'...';
+  const disc=p.oldPrice?Math.round((p.oldPrice-p.price)/p.oldPrice*100):0;
+  const catKey=Object.keys(DB).find(k=>DB[k].find(x=>x.id===id));
+  const catLabel=catMeta[catKey]?.title||catKey;
+  document.getElementById('detailBreadTitle').textContent=p.name;
+  document.getElementById('detailCatLink').textContent=catLabel;
+  document.getElementById('detailCatLink').onclick=()=>showCat(catKey,'All','All');
 
   document.getElementById('detailContent').innerHTML=`
-    <div class="detail-gallery">
-      <div class="gallery-main">${p.icon}</div>
-      <div class="thumbs">
-        ${[p.icon,'📦','✨','🎯'].map((ico,i)=>`<div class="thumb${i===0?' on':''}" onclick="this.closest('.thumbs').querySelectorAll('.thumb').forEach(t=>t.classList.remove('on'));this.classList.add('on')">${ico}</div>`).join('')}
+    <div>
+      <div class="gallery-main-box">${p.icon}</div>
+      <div class="thumbs-row">
+        ${[p.icon,'📦','✨','🎯'].map((ico,i)=>`<div class="thumb ${i===0?'on':''}" onclick="this.closest('.thumbs-row').querySelectorAll('.thumb').forEach(t=>t.classList.remove('on'));this.classList.add('on')">${ico}</div>`).join('')}
       </div>
     </div>
-    <div style="padding-top:8px;">
+    <div>
       <div class="d-brand">${p.brand} · ${p.sub}</div>
       <h1 class="d-title">${p.name}</h1>
       <div class="d-rating">
-        <span style="color:var(--gold);font-size:14px;">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</span>
-        <span style="font-size:13px;color:var(--muted);">${p.rating} / 5.0</span>
+        <span class="stars" style="font-size:14px;">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</span>
+        <span style="font-size:13px;color:#999;">${p.rating} rating</span>
       </div>
       <div class="d-price-row">
         <span class="d-price">${fmt(p.price)}</span>
         ${p.oldPrice?`<span class="d-old">${fmt(p.oldPrice)}</span><span class="d-save">Save ${disc}%</span>`:''}
       </div>
-      <div class="d-stock"><div class="d-stock-dot"></div>In Stock — Ready to Ship Nationwide</div>
+      <div class="d-stock"><div class="d-stock-dot"></div>In Stock — Ready to Ship</div>
       <p class="d-desc">${p.desc}</p>
       <div class="d-specs">${p.specs.map(s=>`<div class="spec-box"><div class="spec-k">${s.k}</div><div class="spec-v">${s.v}</div></div>`).join('')}</div>
       <div class="d-qty-row">
-        <span style="font-size:13px;font-weight:700;color:var(--muted);">Qty:</span>
+        <span style="font-size:13px;font-weight:700;color:#555;">Quantity:</span>
         <div class="d-qty">
-          <button class="d-qbtn" onclick="chgQty(-1)">−</button>
-          <span class="d-qnum" id="dQtyNum">1</span>
-          <button class="d-qbtn" onclick="chgQty(1)">+</button>
+          <button class="d-qty-btn" onclick="chgQty(-1)">−</button>
+          <span class="d-qty-num" id="dQtyNum">1</span>
+          <button class="d-qty-btn" onclick="chgQty(1)">+</button>
         </div>
-        <span style="font-size:13px;color:var(--muted);">Total: <strong style="color:var(--ink);font-family:'Syne',sans-serif;">${fmt(p.price)}</strong></span>
+        <span style="font-size:13px;color:#999;">Total: <strong style="color:#111;">${fmt(p.price)}</strong></span>
       </div>
       <div class="d-actions">
-        <button class="d-add" onclick="addCart('${p.id}')">🛒 Add to Cart</button>
-        <button class="d-wa" onclick="openWA()">💬 WhatsApp</button>
+        <button class="d-add-btn" onclick="addCart('${p.id}')">🛒 Add to Cart</button>
+        <button class="d-wa-btn" onclick="openWA()">💬 WhatsApp</button>
       </div>
-      <div class="trust-badges">
-        <div class="tbadge"><div class="tbadge-ico">🚚</div><div class="tbadge-lbl">Free Delivery</div></div>
-        <div class="tbadge"><div class="tbadge-ico">🔄</div><div class="tbadge-lbl">7-Day Return</div></div>
-        <div class="tbadge"><div class="tbadge-ico">🛡️</div><div class="tbadge-lbl">Warranty</div></div>
+      <div class="trust-row">
+        <div class="trust-box"><div class="trust-box-icon">🚚</div><div class="trust-box-label">Free Delivery</div></div>
+        <div class="trust-box"><div class="trust-box-icon">🔄</div><div class="trust-box-label">7-Day Return</div></div>
+        <div class="trust-box"><div class="trust-box-icon">🛡️</div><div class="trust-box-label">Warranty</div></div>
       </div>
     </div>`;
 
@@ -1369,30 +1191,24 @@ function openProduct(id) {
   showPage('product');
 }
 
-function chgQty(d) {
-  detailQty=Math.max(1,detailQty+d);
-  const el=document.getElementById('dQtyNum');
-  if(el) el.textContent=detailQty;
-}
+function chgQty(d){detailQty=Math.max(1,detailQty+d);const el=document.getElementById('dQtyNum');if(el)el.textContent=detailQty;}
 
-/* ══════════════════════════════════════════
-   CART
-══════════════════════════════════════════ */
-function addCart(id) {
-  const p=ALL.find(x=>x.id===id); if(!p) return;
+// ─── CART ───────────────────────────────────────────
+function addCart(id){
+  const p=ALL.find(x=>x.id===id);if(!p)return;
   const ex=cart.find(x=>x.id===id);
-  if(ex) ex.qty++; else cart.push({...p,qty:1});
+  if(ex)ex.qty++;else cart.push({...p,qty:1});
   updateCart();
-  toast('✓ '+p.name.split(' ').slice(0,4).join(' ')+' added to cart!');
+  toast('✓ '+p.name.split(' ').slice(0,3).join(' ')+' added to cart!');
 }
-function removeCart(id) { cart=cart.filter(x=>x.id!==id); updateCart(); }
-function chgCartQty(id,d) {
-  const item=cart.find(x=>x.id===id); if(!item) return;
+function removeCart(id){cart=cart.filter(x=>x.id!==id);updateCart();}
+function chgCartQty(id,d){
+  const item=cart.find(x=>x.id===id);if(!item)return;
   item.qty=Math.max(0,item.qty+d);
-  if(!item.qty) cart=cart.filter(x=>x.id!==id);
+  if(!item.qty)cart=cart.filter(x=>x.id!==id);
   updateCart();
 }
-function updateCart() {
+function updateCart(){
   const cnt=cart.reduce((s,x)=>s+x.qty,0);
   document.getElementById('cartBadge').textContent=cnt;
   const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
@@ -1405,30 +1221,28 @@ function updateCart() {
         <div class="ci-name">${item.name}</div>
         <div class="ci-price">${fmt(item.price*item.qty)}</div>
         <div class="ci-qty">
-          <button class="ci-qbtn" onclick="chgCartQty('${item.id}',-1)">−</button>
-          <span class="ci-qnum">${item.qty}</span>
-          <button class="ci-qbtn" onclick="chgCartQty('${item.id}',1)">+</button>
-          <span class="ci-remove" onclick="removeCart('${item.id}')">Remove</span>
+          <button class="ci-qty-btn" onclick="chgCartQty('${item.id}',-1)">−</button>
+          <span class="ci-qty-num">${item.qty}</span>
+          <button class="ci-qty-btn" onclick="chgCartQty('${item.id}',1)">+</button>
         </div>
+        <span class="ci-remove" onclick="removeCart('${item.id}')">Remove</span>
       </div>
-    </div>`).join(''):`<div class="cart-empty"><span class="cart-empty-ico">🛍️</span><p style="font-size:15px;font-weight:700;margin-bottom:6px;">Your cart is empty</p><p style="font-size:13px;color:var(--muted);">Browse products to get started!</p></div>`;
+    </div>`).join(''):`<div class="cart-empty"><span class="cart-empty-icon">🛍️</span><p style="font-size:15px;font-weight:700;color:#555;margin-bottom:6px;">Your cart is empty</p><p style="font-size:13px;color:#999;">Browse products to get started!</p></div>`;
 }
-function openCart() { document.getElementById('cartSide').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
-function closeCart() { document.getElementById('cartSide').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
-function doCheckout() {
-  if(!cart.length){toast('Your cart is empty!');return;}
-  closeCart();
-  toast('🎉 Order placed! We\'ll contact you shortly.');
-  cart=[];updateCart();
-}
+function openCart(){document.getElementById('cartSide').classList.add('open');document.getElementById('overlay').classList.add('open');}
+function closeCart(){document.getElementById('cartSide').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
+function doCheckout(){if(!cart.length){toast('Cart is empty!');return;}closeCart();toast('🎉 Order placed! We\'ll contact you soon.');cart=[];updateCart();}
 
-/* ══════════════════════════════════════════
-   SEARCH
-══════════════════════════════════════════ */
-function doSearch() {
+// ─── SEARCH ─────────────────────────────────────────
+function liveSearch(){
   const q=document.getElementById('searchInput').value.trim().toLowerCase();
-  if(!q) return;
-  curCat='cameras'; curBrand='All'; curSub='All';
+  if(q.length<2)return;
+}
+function doSearch(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q)return;
+  curCat='cameras';curBrand='All';curSub='All';
+  // Search across all products
   const results=ALL.filter(p=>p.name.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q)||p.sub.toLowerCase().includes(q));
   document.getElementById('catBreadcrumb').textContent='Search Results';
   document.getElementById('catPageTitle').textContent=`Results for "${q}"`;
@@ -1437,69 +1251,23 @@ function doSearch() {
   document.getElementById('subBtns').innerHTML='';
   document.getElementById('resultsLabel').textContent=`Showing ${results.length} products`;
   const g=document.getElementById('catGrid');
-  g.className='pgrid g4';
-  g.innerHTML=results.length?results.map(p=>card(p)).join(''):`<div style="grid-column:1/-1;text-align:center;padding:80px"><div style="font-size:48px;margin-bottom:14px">🔍</div><p style="font-size:17px;font-weight:700">No results for "${q}"</p></div>`;
+  g.className='prod-grid g4';
+  g.innerHTML=results.length?results.map(p=>card(p)).join(''):`<div style="grid-column:1/-1;text-align:center;padding:80px;color:#999;"><div style="font-size:48px;margin-bottom:14px;">🔍</div><p style="font-size:17px;font-weight:700;">No results found for "${q}"</p></div>`;
   showPage('category');
 }
 
-/* ══════════════════════════════════════════
-   TOAST
-══════════════════════════════════════════ */
-function toast(msg) {
+// ─── TOAST ──────────────────────────────────────────
+function toast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-/* ══════════════════════════════════════════
-   WHATSAPP
-══════════════════════════════════════════ */
-function openWA() {
-  window.open('https://wa.me/923001234567?text=Salam!%20I%20am%20interested%20in%20a%20product%20from%20Mardan%20Camera%20Center.','_blank');
-}
+// ─── WHATSAPP ───────────────────────────────────────
+function openWA(){window.open('https://wa.me/923001234567?text=Salam!%20I%20am%20interested%20in%20a%20product%20from%20Mardan%20Camera%20Center.','_blank');}
 
-/* ══════════════════════════════════════════
-   HERO ROTATOR
-══════════════════════════════════════════ */
-const heroItems = [
-  {emoji:'📷',val:'PKR 549,999',key:'Sony A7 IV · In Stock'},
-  {emoji:'🎬',val:'PKR 249,999',key:'DJI Mavic 3 Classic · In Stock'},
-  {emoji:'🔭',val:'PKR 289,999',key:'Sony 50mm f/1.2 GM · In Stock'},
-  {emoji:'💡',val:'PKR 89,999',key:'Aputure 300c RGB · In Stock'},
-  {emoji:'🚁',val:'PKR 149,999',key:'DJI Mini 4 Pro · New Arrival'},
-];
-let hi=0;
-setInterval(()=>{
-  hi=(hi+1)%heroItems.length;
-  const h=heroItems[hi];
-  const em=document.getElementById('heroEmoji');
-  const val=document.getElementById('heroStatVal');
-  const key=document.getElementById('heroStatKey');
-  if(em){em.style.transform='scale(0.8) rotate(-10deg)';em.style.opacity='0';}
-  setTimeout(()=>{
-    if(em){em.textContent=h.emoji;em.style.transform='scale(1) rotate(0deg)';em.style.opacity='1';em.style.transition='all 0.4s cubic-bezier(0.34,1.56,0.64,1)';}
-    if(val) val.textContent=h.val;
-    if(key) key.textContent=h.key;
-  },250);
-},3500);
-
-/* ══════════════════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════════════════ */
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.style.animationPlayState='running';}});
-},{threshold:0.1});
-document.querySelectorAll('.pcard,.cat-card,.test-card,.team-card,.plan').forEach((el,i)=>{
-  el.style.opacity='0';
-  el.style.animation=`fadeUp 0.5s ease ${(i%5)*0.08}s forwards paused`;
-  io.observe(el);
-});
-
-/* ══════════════════════════════════════════
-   INIT
-══════════════════════════════════════════ */
-renderHomeGrid('cameras');
-updateCart();
+// ─── NAV SCROLL ─────────────────────────────────────
+window.addEventListener('scroll',()=>{});
 </script>
 </body>
 </html>
